@@ -22,7 +22,7 @@ I enjoy making the abstract concrete, the technical poetic, the dense digestible
 * My ['Natural Philosophy'](http://stanforddailyarchive.com/cgi-bin/stanford?a=q&hs=1&r=1&results=1&txq=nat+hillard&txf=txIN&ssnip=txt&o=20&dafdq=&dafmq=&dafyq=&datdq=&datmq=&datyq=&e=-------en-20--1--txt-txIN-nathillard------) Columns for the Stanford Daily newspaper
 
 ## Editing
-* [_The Insider's Guide to Beijing_](http://www.amazon.com/Insiders-Guide-Beijing-Immersion-Guides/dp/0980138604)
+* The Health and Beauty / Sports and Entertainment sections of Beijing Travel Guide [_The Insider's Guide to Beijing_](http://www.amazon.com/Insiders-Guide-Beijing-Immersion-Guides/dp/0980138604)
 
 # Play
 * Playlists by my alternate Radio DJ personality, KZSU's [Professor Barnaby J. Finkerton](http://zookeeper.stanford.edu/index.php?action=viewDJ&seq=selUser&session=&viewuser=543)
