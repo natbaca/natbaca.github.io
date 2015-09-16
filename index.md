@@ -3,9 +3,10 @@ layout: index
 ---
 
 # About Me
-I enjoy making the abstract concrete, the technical poetic, the dense digestible.
+I'm a software engineer at Apple, Inc. But the opinions expressed here are my own.
 
-nat DOT hillard AT gmail DOT com
+## Mission Statement
+I enjoy making the abstract concrete, the technical poetic, the dense digestible.
 
 # Contact
 * [LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAAJfr9AB7cCKhIDzlIMU4jOeed_Lo4Ft0lc)
