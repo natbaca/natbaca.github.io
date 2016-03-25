@@ -5,9 +5,6 @@ layout: index
 # About Me
 I'm a software engineer at Apple, Inc. But the opinions expressed here are my own.
 
-## Mission Statement
-I enjoy making the abstract concrete, the technical poetic, the dense digestible.
-
 # Contact
 * [LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAAJfr9AB7cCKhIDzlIMU4jOeed_Lo4Ft0lc)
 * [Twitter](https://twitter.com/nathillard)
@@ -20,7 +17,7 @@ I enjoy making the abstract concrete, the technical poetic, the dense digestible
 * [My 2015 WWDC Talk, "What's New In Internationalization"](https://developer.apple.com/videos/wwdc/2015/?id=227)
 * [My 2013 WWDC Portion of "Making Your App World Ready"](https://developer.apple.com/videos/wwdc/2013/#219)
 
-## Articles
+## Columns
 * My [linguistics Columns](http://www.cherwell.org/profile/nat-hillard) for the Oxford Cherwell newspaper
 * My ['Natural Philosophy'](http://stanforddailyarchive.com/cgi-bin/stanford?a=q&hs=1&r=1&results=1&txq=nat+hillard&txf=txIN&ssnip=txt&o=20&dafdq=&dafmq=&dafyq=&datdq=&datmq=&datyq=&e=-------en-20--1--txt-txIN-nathillard------) Columns for the Stanford Daily newspaper
 
