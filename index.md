@@ -1,7 +1,3 @@
----
-layout: index
----
-
 # About Me
 I'm a software engineer at Apple, Inc. But the opinions expressed here are my own.
 
