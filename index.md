@@ -7,7 +7,6 @@ I'm a software engineer at Apple, Inc. But the opinions expressed here are my ow
 
 # Contact
 * [LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAAJfr9AB7cCKhIDzlIMU4jOeed_Lo4Ft0lc)
-* [Twitter](https://twitter.com/nathillard)
 * [GitHub](https://github.com/nathillard)
 * [StackOverflow](http://stackoverflow.com/users/535543/nat)
 * [Facebook](https://www.facebook.com/nat.hillard)
