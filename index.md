@@ -1,15 +1,6 @@
 ---
 layout: index
 ---
-# About Me
-I'm a software engineer at Apple, Inc. But the opinions expressed here are my own.
-
-# Contact
-* [LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAAJfr9AB7cCKhIDzlIMU4jOeed_Lo4Ft0lc)
-* [Facebook](https://www.facebook.com/nat.hillard)
-* [GitHub](https://github.com/nathillard)
-* [StackOverflow](http://stackoverflow.com/users/535543/nat)
-* [Goodreads](https://www.goodreads.com/user/show/12688292-nat-hillard)
 
 # Work
 
@@ -26,3 +17,10 @@ I'm a software engineer at Apple, Inc. But the opinions expressed here are my ow
 
 # Play
 * Playlists by my alternate Radio DJ personality, KZSU's [Professor Barnaby J. Finkerton](http://zookeeper.stanford.edu/index.php?action=viewDJ&seq=selUser&session=&viewuser=543)
+
+# Contact
+* [LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAAJfr9AB7cCKhIDzlIMU4jOeed_Lo4Ft0lc)
+* [Facebook](https://www.facebook.com/nat.hillard)
+* [GitHub](https://github.com/nathillard)
+* [StackOverflow](http://stackoverflow.com/users/535543/nat)
+* [Goodreads](https://www.goodreads.com/user/show/12688292-nat-hillard)
