@@ -12,6 +12,7 @@ I'm a software engineer at Apple, Inc. But the opinions expressed here are my ow
 * [Goodreads](https://www.goodreads.com/user/show/12688292-nat-hillard)
 
 # Work
+
 ## Presentations
 * My 2015 WWDC Talk, ["What's New In Internationalization"](https://developer.apple.com/videos/wwdc/2015/?id=227)
 * My 2013 WWDC Portion of ["Making Your App World Ready"](https://developer.apple.com/videos/wwdc/2013/#219)
