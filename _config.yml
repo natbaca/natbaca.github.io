@@ -1,8 +1,19 @@
-markdown: kramdown
-kramdown:
-   auto_ids: true
 title: Nat Hillard
-description: "Engineer. Writer. Wikipedia Enthusiast. "
-google_analytics: UA-17815248-1
-show_downloads: true
+author: Nat Hillard
+description: "Engineer. Manager. Writer. Reader. "
+show_downloads: false
+google_analytics: UA-179825035-1
 theme: jekyll-theme-minimal
+logo:
+github:
+  is_user_page: true
+  owner_name: Nat Hillard
+  owner_url: http://github.com/nathillard/
+social_links:
+  twitter: anthillard
+  github: nathillard
+  facebook: nathillard
+  instagram: hilloflard
+  linkedin: nathillard
+  medium: nathillard
+  goodreads: https://www.goodreads.com/user/show/12688292-nat-hillard
