@@ -1,3 +1,8 @@
 markdown: kramdown
 kramdown:
    auto_ids: true
+title: Nat Hillard
+description: "Engineer. Writer. Wikipedia Enthusiast. "
+google_analytics: UA-17815248-1
+show_downloads: true
+theme: jekyll-theme-minimal
