@@ -12,6 +12,9 @@ github:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-font-awesome-sass
+font-awesome:
+  assets: true
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project
@@ -19,11 +22,3 @@ defaults:
       layout: "default"
 exclude:
   - external
-social_links:
-  twitter: anthillard
-  github: nathillard
-  facebook: nathillard
-  instagram: hilloflard
-  linkedin: nathillard
-  medium: nathillard
-  goodreads: https://www.goodreads.com/user/show/12688292-nat-hillard
