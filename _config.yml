@@ -9,6 +9,16 @@ github:
   is_user_page: true
   owner_name: Nat Hillard
   owner_url: http://github.com/nathillard/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+exclude:
+  - external
 social_links:
   twitter: anthillard
   github: nathillard
