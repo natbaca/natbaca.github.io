@@ -8,19 +8,22 @@ a:hover {
 }
 
 #social-icons {
-  padding-left: 0px;
-  padding-top: 20px;
-  display: flex; /* establish flex container */
-  flex-wrap: wrap; /* enable flex items to wrap */
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin-bottom: 50px;
+  justify-items: center;
 }
 
 #social-icons .cell {
-  padding-bottom: 20px;
-  flex: 0 0 32%; /* don't grow, don't shrink, width */
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 #social-icons i {
-  font-size: 110px;
+  font-size: 50px;
+}
+
+#cv {
+  position: absolute;
+  right: 15%;
 }
