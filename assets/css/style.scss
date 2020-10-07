@@ -9,16 +9,19 @@ a:hover {
 }
 
 #social-icons {
-  list-style-type: none;
   padding-left: 0px;
+  padding-top: 20px;
+  display: flex; /* establish flex container */
+  flex-wrap: wrap; /* enable flex items to wrap */
+  justify-content: space-around;
 }
 
-#social-icons li {
-  float: left;
-  padding-right: 10px;
+#social-icons .cell {
   padding-bottom: 20px;
+  flex: 0 0 32%; /* don't grow, don't shrink, width */
+  margin-bottom: 5px;
 }
 
 #social-icons i {
-  font-size: 40px;
+  font-size: 80px;
 }
