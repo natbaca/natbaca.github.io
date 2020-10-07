@@ -2,8 +2,6 @@
 layout: default
 ---
 
-Hi! I'm Nat Hillard. I'm interested in everything.
-
 <div id="social-icons">
 
 <div class="cell"><a href="https://github.com/nathillard"><i class="fab fa-github"></i></a></div>
