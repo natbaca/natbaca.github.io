@@ -15,6 +15,4 @@ layout: default
 <div class="cell"><a href="https://en.wikipedia.org/wiki/User:NatHillard"><i class="fab fa-wikipedia-w"></i></a></div>
 <div class="cell"><a href="https://www.goodreads.com/user/show/12688292-nat-hillard"><i class="fab fa-goodreads"></i></a></div>
 <div class="cell"><a href="https://medium.com/@nathillard/"><i class="fab fa-medium"></i></a></div>
-
-<div class="cell"><a href="./resume"><i class="fas fa-user-tie"></i></a></div>
 </div>
