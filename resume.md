@@ -10,6 +10,12 @@ permalink: /resume/
 
 # Professional Experience
 
+## United States Digital Service - Washington, DC USA
+
+### Digital Services Expert || Oct 2020 - Present
+
+- Deliver better government services to the American people through technology and design
+
 ## Spotify Inc.
 
 ### Engineering Manager, SoundBetter || New York, NY USA || Jan 2020 - Sep 2020
