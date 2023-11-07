@@ -1,14 +1,14 @@
-title: Nat Hillard
-author: Nat Hillard
-description: "Hi! I’m Nat Hillard. I’m interested in everything."
+title: Nat Baca
+author: Nat Baca
+description: "Hi! I’m Nat Baca. I’m interested in everything."
 show_downloads: false
 google_analytics: UA-179825035-1
 theme: jekyll-theme-minimal
 logo:
 github:
   is_user_page: true
-  owner_name: Nat Hillard
-  owner_url: http://github.com/nathillard/
+  owner_name: Nat Baca
+  owner_url: http://github.com/natbaca/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

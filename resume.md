@@ -1,11 +1,11 @@
 ---
-title: \vspace{-4ex} Nathaniel 'Nat' Hillard\vspace{-8ex}
+title: \vspace{-4ex} Nathaniel 'Nat' Baca\vspace{-8ex}
 geometry: margin=1.5cm
 ---
 
 ## Contact Information
 
-+1 (650) 319-5001 || nat.hillard@gmail.com || www.nathillard.com
++1 (650) 319-5001 || <natkbaca@gmail.com> || <www.natbaca.net>
 
 ## Professional Experience
 
