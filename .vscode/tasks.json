@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        // 1) DEV TASK
+        "label": "Jekyll Dev",
+        "type": "shell",
+        // Feel free to add --drafts --livereload, etc. here:
+        "command": "JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
+        "isBackground": true,
+        "problemMatcher": [
+          {
+            "owner": "custom",
+            "pattern": [
+              {
+                "regexp": "Server address: (http://127.0.0.1:4000)",
+                "file": 1
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": "^",
+              "endsPattern": "Server running..."
+            }
+          }
+        ]
+      },
+      {
+        // 2) PROD TASK
+        "label": "Jekyll Prod",
+        "type": "shell",
+        "command": "JEKYLL_ENV=production bundle exec jekyll serve --trace",
+        "isBackground": true,
+        "problemMatcher": [
+          {
+            "owner": "custom",
+            "pattern": [
+              {
+                "regexp": "Server address: (http://127\\.0\\.0\\.1\\:4000)",
+                "file": 1
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": "^",
+              "endsPattern": "Server running..."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

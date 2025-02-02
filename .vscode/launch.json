@@ -2,28 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Jekyll in Chrome",
-      "type": "node",
+      "name": "Dev: Jekyll + Chrome",
+      "type": "chrome",
       "request": "launch",
-      "runtimeExecutable": "bundle",
-      "args": [
-        "exec",
-        "jekyll",
-        "serve",
-        "--livereload",
-        "--drafts",
-        "--trace"
-      ],
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      // This is the key part: waits for Jekyll to say "Server address: http://127.0.0.1:4000"
-      "serverReadyAction": {
-        // Must match the Jekyll output line exactly; note escaped dots and the capture group (  ).
-        "pattern": "Server address: (http://127\\.0\\.0\\.1\\:4000)",
-        "uriFormat": "%s",
-        "action": "debugWithChrome"
-      }
+      "url": "http://127.0.0.1:4000",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll Dev"
+    },
+    {
+      "name": "Prod: Jekyll + Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://127.0.0.1:4000",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll Prod"
     }
   ]
 }
