@@ -28,7 +28,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 1rem; /* spacing between the image, heading, and paragraph */
-  margin-bottom: 2rem;
+  margin-bottom: 1rem !important; /* was 2rem, now 1rem */
 }
 
 /* Headshot styling */
@@ -58,4 +58,21 @@ html, body {
 
 #social-icons i {
   font-size: 50px;
+  margin: 0 auto 1rem !important; /* smaller bottom margin */
 }
+/* Override theme floats/borders on sections and images */
+section, .profile, #social-icons, img {
+  float: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  clear: both !important; /* ensures they stack vertically */
+}
+
+/* Remove theme-added spacing on section tags */
+section {
+  margin: 0 !important;     /* override large margins */
+  padding: 0 !important;    /* override any padded sections */
+  border: none !important;  /* remove faint grey borders */
+  box-shadow: none !important;
+}
+
