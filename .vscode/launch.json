@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+    // DEV
     {
       "name": "Dev: Jekyll + Chrome",
       "type": "chrome",
@@ -9,6 +10,7 @@
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "Jekyll Dev"
     },
+    // PROD
     {
       "name": "Prod: Jekyll + Chrome",
       "type": "chrome",

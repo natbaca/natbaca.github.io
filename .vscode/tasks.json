@@ -1,53 +1,54 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        // 1) DEV TASK
-        "label": "Jekyll Dev",
-        "type": "shell",
-        // Feel free to add --drafts --livereload, etc. here:
-        "command": "JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
-        "isBackground": true,
-        "problemMatcher": [
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Jekyll Dev",
+      "type": "shell",
+      "command": "JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
+      "isBackground": true,
+      // This "problemMatcher" does two things:
+      // 1) Creates a dummy pattern capturing the entire line as both file and message
+      // 2) Uses "background" to detect when Jekyll is done starting
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
           {
-            "owner": "custom",
-            "pattern": [
-              {
-                "regexp": "Server address: (http://127.0.0.1:4000)",
-                "file": 1
-              }
-            ],
-            "background": {
-              "activeOnStart": true,
-              "beginsPattern": "^",
-              "endsPattern": "Server running..."
-            }
+            // Just capture the whole line in one group
+            "regexp": "^(.*)$",
+            "file": 1,
+            "message": 1
           }
-        ]
-      },
-      {
-        // 2) PROD TASK
-        "label": "Jekyll Prod",
-        "type": "shell",
-        "command": "JEKYLL_ENV=production bundle exec jekyll serve --trace",
-        "isBackground": true,
-        "problemMatcher": [
-          {
-            "owner": "custom",
-            "pattern": [
-              {
-                "regexp": "Server address: (http://127\\.0\\.0\\.1\\:4000)",
-                "file": 1
-              }
-            ],
-            "background": {
-              "activeOnStart": true,
-              "beginsPattern": "^",
-              "endsPattern": "Server running..."
-            }
-          }
-        ]
+        ],
+        "background": {
+          "activeOnStart": true,
+          // We can start listening from the very first line
+          "beginsPattern": "^",
+          // Once Jekyll prints "Server running..." we consider the server "ready"
+          // Adjust this to match your actual final Jekyll output, e.g. "Press Ctrl-C to stop."
+          "endsPattern": "Server running..."
+        }
       }
-    ]
-  }
-  
+    },
+    {
+      "label": "Jekyll Prod",
+      "type": "shell",
+      "command": "JEKYLL_ENV=production bundle exec jekyll serve --trace",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
+          {
+            "regexp": "^(.*)$",
+            "file": 1,
+            "message": 1
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^",
+          "endsPattern": "Server running..."
+        }
+      }
+    }
+  ]
+}
