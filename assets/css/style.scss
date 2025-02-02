@@ -1,4 +1,5 @@
 ---
+# Jekyll front matter
 ---
 
 @import "{{ site.theme }}";
@@ -21,21 +22,40 @@ html, body {
   text-align: center;
 }
 
-#social-icons {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, auto);
-  justify-items: center;
+/* Profile Section */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* spacing between the image, heading, and paragraph */
   margin-bottom: 2rem;
 }
 
-#social-icons i {
-  font-size: 50px;
+/* Headshot styling */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Social icons grid */
+#social-icons {
+  list-style: none;
+  margin: 0 auto 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1rem;
+  justify-content: center;
+  justify-items: center;
 }
 
 #social-icons li {
   list-style: none;
+}
+
+#social-icons i {
+  font-size: 50px;
 }
