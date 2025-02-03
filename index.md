@@ -7,7 +7,7 @@ title: "Nat Baca"
 
 ## About Me
 
-{% include_relative about.md %}
+{% include about.md %}
 
 
 {% if site.posts.size > 0 %}
@@ -15,5 +15,7 @@ title: "Nat Baca"
 {% for post in site.posts %}
   <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
   <p>{{ post.short }}</p>
-{% endfor %}
+{% end for %} 
 {% endif %}
+
+{% include books.html %}
