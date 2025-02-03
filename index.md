@@ -21,3 +21,7 @@ title: "Nat Baca"
 <div class="bookshelf">
 {% include books.html %}
 </div>
+
+## Activities
+
+{% include strava.html %}
