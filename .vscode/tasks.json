@@ -6,25 +6,22 @@
       "type": "shell",
       "command": "JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
       "isBackground": true,
-      // This "problemMatcher" does two things:
-      // 1) Creates a dummy pattern capturing the entire line as both file and message
-      // 2) Uses "background" to detect when Jekyll is done starting
       "problemMatcher": {
         "owner": "custom",
+        // This dummy pattern meets VS Code's requirement for both file & message
         "pattern": [
           {
-            // Just capture the whole line in one group
-            "regexp": "^(.*)$",
+            "regexp": "^(.*?):(.*)$",
+            "kind": "file",
             "file": 1,
-            "message": 1
+            "message": 2
           }
         ],
         "background": {
           "activeOnStart": true,
-          // We can start listening from the very first line
+          // Start watching from first line
           "beginsPattern": "^",
-          // Once Jekyll prints "Server running..." we consider the server "ready"
-          // Adjust this to match your actual final Jekyll output, e.g. "Press Ctrl-C to stop."
+          // Stop when Jekyll prints "Server running..." 
           "endsPattern": "Server running..."
         }
       }
@@ -38,9 +35,10 @@
         "owner": "custom",
         "pattern": [
           {
-            "regexp": "^(.*)$",
+            "regexp": "^(.*?):(.*)$",
+            "kind": "file",
             "file": 1,
-            "message": 1
+            "message": 2
           }
         ],
         "background": {
