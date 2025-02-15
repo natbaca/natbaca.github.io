@@ -4,7 +4,7 @@
     {
       "label": "Jekyll Dev",
       "type": "shell",
-      "command": "JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
+      "command": "export ASDF_DATA_DIR=\"${HOME}/.asdf\" && export PATH=\"${ASDF_DATA_DIR}/shims:$PATH\" && JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
       "isBackground": true,
       "problemMatcher": {
         "owner": "custom",
@@ -29,7 +29,7 @@
     {
       "label": "Jekyll Prod",
       "type": "shell",
-      "command": "JEKYLL_ENV=production bundle exec jekyll serve --trace",
+      "command": "export ASDF_DATA_DIR=\"${HOME}/.asdf\" && export PATH=\"${ASDF_DATA_DIR}/shims:$PATH\" && JEKYLL_ENV=production bundle exec jekyll serve --trace",
       "isBackground": true,
       "problemMatcher": {
         "owner": "custom",
