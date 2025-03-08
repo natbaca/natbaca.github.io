@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: " en-US" }}">
+<html lang="{{ site.lang | default: 'en-US' }}">
 
 <head>
   <meta charset="UTF-8">
@@ -8,34 +8,20 @@
 
   {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-
-
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
   <script src="https://kit.fontawesome.com/bbb5f99c85.js" crossorigin="anonymous"></script>
   {% include head-custom.html %}
 </head>
 
 <body>
   <div class="wrapper">
-    <header>
-      <div class="header-content">
-        <h1>
-          <a href="{{ '/' | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a>
-        </h1>
-        <img class="profile-pic" src="{{ '/assets/img/headshot.png' | relative_url }}" alt="Logo" />
-        {% include social.html %}
-      </div>
-    </header>
+    {% include header.html %}
     <main>
-      <section>
-
+      <section class="content">
         {{ content }}
-
       </section>
+    </main>
   </div>
-  </main>
+
   <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 </body>
 

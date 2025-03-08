@@ -1,0 +1,11 @@
+<header class="site-header">
+    <div class="header-content">
+        <h1>
+            <a href="{{ '/' | absolute_url }}">
+                {{ site.title | default: site.github.repository_name }}
+            </a>
+        </h1>
+        <img class="profile-pic" src="{{ '/assets/img/headshot.png' | relative_url }}" alt="Nat Baca" />
+        {% include social.html %}
+    </div>
+</header>

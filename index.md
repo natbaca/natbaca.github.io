@@ -11,9 +11,7 @@ title: "Nat Baca"
 
 ## Bookshelf
 
-<div class="bookshelf">
 {% include books.html %}
-</div>
 
 ## Activities
 

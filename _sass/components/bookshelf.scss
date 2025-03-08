@@ -1,0 +1,31 @@
+.gr_custom_container {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px 5px;
+    background: #fff;
+    color: #000;
+  
+    h2 {
+      border-bottom: 1px solid gray;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+  
+    .gr_custom_each_container {
+      clear: both;
+      margin-bottom: 10px;
+      overflow: auto;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #aaa;
+    }
+  
+    .gr_custom_book_container {
+      height: 60px;
+      float: left;
+      margin-right: 4px;
+      width: 39px;
+      overflow: hidden;
+    }
+  }
+  

@@ -1,0 +1,22 @@
+#social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    margin-top: 3rem;
+  
+    li {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  
+      i {
+        font-size: 3rem;
+        margin: 0;
+      }
+    }
+  }
+  
