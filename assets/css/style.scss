@@ -29,27 +29,29 @@ header {
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-/* Increase icon size, e.g. 80px */
+
 #social-icons {
-  font-size: 5em;
-  list-style: none;
-  margin: 0 auto 2rem;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, auto);
+  display: flex;
+  flex-wrap: wrap; /* Wrap to next line if needed */
+  justify-content: center; /* Horizontally center icons */
+  align-items: center;     /* Vertically align icons consistently */
   gap: 1rem;
-  justify-content: left;
-  justify-items: left;
+  padding: 0;
+  margin: 0 auto;
 }
 
 #social-icons li {
   list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #social-icons i {
-  font-size: 1.0em;
-  margin: 0 auto 1rem !important; /* smaller bottom margin */
+  font-size: 3rem; /* Adjust icon size consistently */
+  margin: 0; /* Control spacing via li padding/margin instead */
 }
+
 
 
 h2 {
