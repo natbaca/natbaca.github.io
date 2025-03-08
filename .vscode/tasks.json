@@ -8,21 +8,19 @@
       "isBackground": true,
       "problemMatcher": {
         "owner": "custom",
-        // This dummy pattern meets VS Code's requirement for both file & message
         "pattern": [
           {
-            "regexp": "^(.*?):(.*)$",
-            "kind": "file",
+            "regexp": "^\\s*(\\S.*?):(\\d+):(\\d+):\\s*(.+)$",
             "file": 1,
-            "message": 2
+            "line": 2,
+            "column": 3,
+            "message": 4
           }
         ],
         "background": {
           "activeOnStart": true,
-          // Start watching from first line
-          "beginsPattern": "^",
-          // Stop when Jekyll prints "Server running..." 
-          "endsPattern": "Server running..."
+          "beginsPattern": "Configuration file:",
+          "endsPattern": "Server running\\.\\.\\. press ctrl-c to stop\\."
         }
       }
     },
@@ -35,16 +33,17 @@
         "owner": "custom",
         "pattern": [
           {
-            "regexp": "^(.*?):(.*)$",
-            "kind": "file",
+            "regexp": "^\\s*(\\S.*?):(\\d+):(\\d+):\\s*(.+)$",
             "file": 1,
-            "message": 2
+            "line": 2,
+            "column": 3,
+            "message": 4
           }
         ],
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "^",
-          "endsPattern": "Server running..."
+          "beginsPattern": "Configuration file:",
+          "endsPattern": "Server running\\.\\.\\. press ctrl-c to stop\\."
         }
       }
     }

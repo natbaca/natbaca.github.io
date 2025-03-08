@@ -1,19 +1,19 @@
-.site-header, .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    h1 {
-      font-size: 3rem;
-    }
-  
-    .profile-pic {
-      width: 20rem;
-      height: 20rem;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
+.site-header,
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 3.0rem; // Matches exactly original size
   }
-  
+
+  .profile-pic {
+    width: 20em; // original units
+    height: 20em; // original units
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+}

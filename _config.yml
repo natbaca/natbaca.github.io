@@ -24,3 +24,6 @@ defaults:
 exclude:
   - external
   - vendor
+sass:
+    sass_dir: _sass
+    style: compressed

@@ -1,8 +1,13 @@
 ---
 ---
 
-@import "base";
+@import "{{ site.theme }}";
+
 @import "components/header";
 @import "components/social-icons";
 @import "components/bookshelf";
 @import "components/wiki-edits";
+
+h2 {
+  margin-top: 2rem;
+}
