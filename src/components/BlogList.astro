@@ -18,7 +18,18 @@ const { posts } = Astro.props;
 ---
 
 <div class="blog-list">
-  {posts.map((post) => (
-    <BlogPost {...post} />
-  ))}
+  {
+    posts.length ? (
+      posts.map((post) => <BlogPost {...post} />)
+    ) : (
+      <div class="empty-posts" role="status">
+        <div class="empty-posts__ribbon">No posts yet</div>
+        <h3>Writing in progress</h3>
+        <p>
+          This space will fill with essays, field notes, and small experiments.
+          Check back soon for the first entry.
+        </p>
+      </div>
+    )
+  }
 </div>
