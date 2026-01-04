@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import About from "../../components/About.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <div class="split-layout">
+    <About />
+    <section class="content-column" aria-label="Post">
+      <section class="section-block">
+        <article class="post-full">
+          <a class="post-back" href="/">← Back to the list</a>
+          <h1>{post.data.title}</h1>
+          <p class="post-meta">
+            <FormattedDate date={post.data.pubDate} />
+            {post.data.updatedDate ? (
+              <span>
+                {" "}
+                • updated <FormattedDate date={post.data.updatedDate} />
+              </span>
+            ) : null}
+          </p>
+          <div class="post-content">
+            <Content />
+          </div>
+        </article>
+      </section>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .post-full {
+    padding: 0;
+  }
+
+  .post-back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .post-content {
+    margin-top: 2rem;
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.2rem;
+  }
+</style>

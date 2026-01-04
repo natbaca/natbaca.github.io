@@ -1,0 +1,53 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  excerpt: string;
+}
+
+const { slug, title, description, pubDate, updatedDate, excerpt } = Astro.props;
+---
+
+<article class="post-card">
+  <header>
+    <h3>
+      <a href={`/blog/${slug}/`}>{title}</a>
+    </h3>
+    <p class="post-meta">
+      <FormattedDate date={pubDate} />
+      {updatedDate ? (
+        <span>
+          {" "}
+          • updated <FormattedDate date={updatedDate} />
+        </span>
+      ) : null}
+    </p>
+    <p class="post-description">{description}</p>
+  </header>
+  <div class="post-body">
+    <p>{excerpt}</p>
+    <p>
+      <a class="post-more" href={`/blog/${slug}/`}>
+        Read the full post →
+      </a>
+    </p>
+  </div>
+</article>
+
+<style>
+  .post-card h3 a {
+    color: inherit;
+  }
+
+  .post-more {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+  }
+</style>

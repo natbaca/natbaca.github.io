@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../components/About.astro";
+import BlogList from "../components/BlogList.astro";
+import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const extractFirstParagraph = (body: string) => {
+  const blocks = body.split(/\n\s*\n/).map((block) => block.trim());
+  const first = blocks.find((block) => block.length > 0) ?? "";
+  const withoutImages = first.replace(/!\[[^\]]*]\([^)]*\)/g, "");
+  const withoutLinks = withoutImages.replace(/\[([^\]]+)]\([^)]*\)/g, "$1");
+  return withoutLinks
+    .replace(/[`*_>#-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+};
+
+const postPreviews = posts.map((post) => ({
+  slug: post.slug,
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate,
+  updatedDate: post.data.updatedDate,
+  excerpt: extractFirstParagraph(post.body) || post.data.description,
+}));
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="split-layout">
+    <About />
+    <section class="content-column" aria-label="Blog posts">
+      <section class="section-block">
+        <BlogList posts={postPreviews} />
+      </section>
+    </section>
+  </div>
+</BaseLayout>

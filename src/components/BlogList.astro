@@ -1,0 +1,24 @@
+---
+import BlogPost from "./BlogPost.astro";
+
+interface PostPreview {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  excerpt: string;
+}
+
+interface Props {
+  posts: PostPreview[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="blog-list">
+  {posts.map((post) => (
+    <BlogPost {...post} />
+  ))}
+</div>

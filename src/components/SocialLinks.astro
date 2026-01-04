@@ -1,0 +1,92 @@
+---
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/natbaca/",
+    label: "LinkedIn",
+    icon: "fab fa-linkedin",
+  },
+  {
+    href: "https://github.com/natbaca",
+    label: "GitHub",
+    icon: "fab fa-github",
+  },
+  {
+    href: "https://en.wikipedia.org/wiki/User:NatBaca",
+    label: "Wikipedia",
+    icon: "fab fa-wikipedia-w",
+  },
+  {
+    href: "https://www.goodreads.com/user/show/12688292-nat-baca",
+    label: "Goodreads",
+    icon: "fab fa-goodreads",
+  },
+  {
+    href: "https://www.duolingo.com/profile/natkbaca",
+    label: "Duolingo",
+    icon: "fa-brands fa-earlybirds",
+  },
+  {
+    href: "https://www.instagram.com/natural_light_official/",
+    label: "Instagram",
+    icon: "fa-brands fa-instagram",
+  },
+  {
+    href: "https://bsky.app/profile/natbaca.bsky.social",
+    label: "Bluesky",
+    icon: "fa-brands fa-bluesky",
+  },
+];
+---
+
+<div class="social-links" aria-label="Social links">
+  <ul>
+    {
+      socialLinks.map((link) => (
+        <li>
+          <a href={link.href} aria-label={link.label}>
+            <i class={link.icon} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .social-links {
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .social-links li {
+    display: inline-flex;
+  }
+
+  .social-links a {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-deep);
+    color: var(--accent-strong);
+    border: 1px solid var(--line);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .social-links a:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+  }
+</style>

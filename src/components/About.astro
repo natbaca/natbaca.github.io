@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import GoodreadsWidget from "./GoodreadsWidget.astro";
+import SocialLinks from "./SocialLinks.astro";
+import headshot from "../assets/headshot.png";
+---
+
+<aside class="about-column">
+  <h1>Hi, I'm Nat Baca</h1>
+  <p class="subtitle">I'm interested in everything.</p>
+  <Image
+    class="about-headshot"
+    src={headshot}
+    width={320}
+    height={320}
+    alt="Nat Baca"
+  />
+  <ul>
+    <li>
+      By Day, I'm a Director of Engineering at the
+      <a href="https://wikimediafoundation.org">Wikimedia Foundation</a>.
+    </li>
+    <li>
+      By Night, I'm a host of
+      <a href="https://albuquerque.nerdnite.com">Nerd Nite Albuquerque</a>.
+    </li>
+    <li>
+      I've worked for <a href="https://www.apple.com/">Apple</a>,
+      <a href="https://www.spotify.com/">Spotify</a>, the
+      <a href="https://www.usds.gov/">White House</a>, and
+      <a href="https://www.linkedin.com/in/natbaca/">more</a>.
+    </li>
+    <li>
+      I like to <a href="https://www.goodreads.com/user/show/12688292-nat-baca"
+        >read</a
+      >,
+      <a href="https://en.wikipedia.org/wiki/User:NatBaca">write</a>, and
+      <a href="https://github.com/natbaca">code</a>.
+    </li>
+  </ul>
+  <SocialLinks />
+</aside>
+
+<style>
+  .about-headshot {
+    width: min(220px, 70vw);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    object-fit: cover;
+    margin: 1rem auto 1.25rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .about-column ul {
+    padding-left: 1.2rem;
+  }
+
+  .about-column li + li {
+    margin-top: 0.6rem;
+  }
+
+  .about-column a {
+    margin-left: 0.25rem;
+  }
+</style>
