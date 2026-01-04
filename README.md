@@ -18,8 +18,8 @@ Personal site and blog built with Astro.
 ## Development
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open `http://localhost:4321` in your browser.
