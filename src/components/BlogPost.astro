@@ -30,7 +30,7 @@ const { slug, title, description, pubDate, updatedDate, excerpt } = Astro.props;
     <p class="post-description">{description}</p>
   </header>
   <div class="post-body">
-    <p>{excerpt}</p>
+    {excerpt && excerpt !== description ? <p>{excerpt}</p> : null}
     <p>
       <a class="post-more" href={`/blog/${slug}/`}>
         Read the full post →

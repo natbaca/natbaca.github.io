@@ -12,7 +12,10 @@ const posts = (await getCollection("blog")).sort(
 const extractFirstParagraph = (body: string) => {
   const blocks = body.split(/\n\s*\n/).map((block) => block.trim());
   const first = blocks.find((block) => block.length > 0) ?? "";
-  const withoutImages = first.replace(/!\[[^\]]*]\([^)]*\)/g, "");
+  const withoutFenceLanguage = first
+    .replace(/```[^\n]*\n/g, "")
+    .replace(/```/g, "");
+  const withoutImages = withoutFenceLanguage.replace(/!\[[^\]]*]\([^)]*\)/g, "");
   const withoutLinks = withoutImages.replace(/\[([^\]]+)]\([^)]*\)/g, "$1");
   return withoutLinks
     .replace(/[`*_>#-]/g, "")

@@ -1,10 +1,16 @@
 ---
 interface Props {
-	date: Date;
+	date?: Date | string;
 }
 
 const { date } = Astro.props;
+const parsedDate =
+	date instanceof Date ? date : date ? new Date(date) : undefined;
+const validDate =
+	parsedDate && !Number.isNaN(parsedDate.valueOf()) ? parsedDate : undefined;
 const formatter = new Intl.DateTimeFormat('en', { dateStyle: 'long' });
 ---
 
-<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+{validDate ? (
+	<time datetime={validDate.toISOString()}>{formatter.format(validDate)}</time>
+) : null}

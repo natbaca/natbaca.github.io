@@ -26,7 +26,7 @@ Open `http://localhost:4321` in your browser.
 
 ## Content
 
-Add posts as Markdown files in `src/content/blog/` with the required frontmatter defined in `src/content.config.ts`.
+Add posts as Markdown files in `src/content/blog/` with the required frontmatter defined in `src/content/config.ts`.
 
 ## Deployment
 
