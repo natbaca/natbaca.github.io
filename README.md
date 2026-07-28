@@ -1,5 +1,7 @@
 # natbaca.github.io
 
+[![Deploy to GitHub Pages](https://github.com/natbaca/natbaca.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/natbaca/natbaca.github.io/actions/workflows/deploy.yml)
+
 Personal site and blog built with Astro.
 
 ## Overview
