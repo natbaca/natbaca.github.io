@@ -1,53 +1,60 @@
 ---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
   slug: string;
   title: string;
-  description: string;
-  pubDate: Date;
+  publishedAt: Date;
   updatedDate?: Date;
-  excerpt: string;
 }
 
-const { slug, title, description, pubDate, updatedDate, excerpt } = Astro.props;
+const {
+  slug,
+  title,
+  publishedAt,
+  updatedDate,
+} = Astro.props;
 ---
 
-<article class="post-card">
-  <header>
-    <h3>
+<Card className="post-card">
+  <CardHeader>
+    <CardTitle role="heading" aria-level={2}>
       <a href={`/blog/${slug}/`}>{title}</a>
-    </h3>
-    <p class="post-meta">
-      <FormattedDate date={pubDate} />
-      {updatedDate ? (
-        <span>
-          {" "}
-          • updated <FormattedDate date={updatedDate} />
-        </span>
-      ) : null}
-    </p>
-    <p class="post-description">{description}</p>
-  </header>
-  <div class="post-body">
-    {excerpt && excerpt !== description ? <p>{excerpt}</p> : null}
-    <p>
-      <a class="post-more" href={`/blog/${slug}/`}>
-        Read the full post →
-      </a>
-    </p>
-  </div>
-</article>
+    </CardTitle>
+    <CardDescription>
+      {
+        updatedDate ? (
+          <>Updated <FormattedDate date={updatedDate} /></>
+        ) : (
+          <>Published <FormattedDate date={publishedAt} /></>
+        )
+      }
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <article class="post-content">
+      <slot />
+    </article>
+  </CardContent>
+</Card>
 
 <style>
-  .post-card h3 a {
+  .post-card a {
     color: inherit;
   }
 
-  .post-more {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.75rem;
+  .post-content :global(> :first-child) {
+    margin-top: 0;
+  }
+
+  .post-content :global(> :last-child) {
+    margin-bottom: 0;
   }
 </style>

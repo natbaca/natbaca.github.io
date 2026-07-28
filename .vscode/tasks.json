@@ -2,48 +2,60 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Jekyll Dev",
+      "label": "Astro: Install Dependencies",
       "type": "shell",
-      "command": "export ASDF_DATA_DIR=\"${HOME}/.asdf\" && export PATH=\"${ASDF_DATA_DIR}/shims:$PATH\" && JEKYLL_ENV=development bundle exec jekyll serve --livereload --drafts --trace",
+      "command": "npx --yes --package=node@24 --package=pnpm@10.8.1 --call 'pnpm install --frozen-lockfile && pnpm exec astro sync'",
+      "problemMatcher": []
+    },
+    {
+      "label": "Astro: Development Server",
+      "type": "shell",
+      "command": "ASTRO_DEV_BACKGROUND=0 npx --yes --package=node@24 --package=pnpm@10.8.1 --call 'pnpm run dev --host 127.0.0.1'",
+      "dependsOn": "Astro: Install Dependencies",
+      "dependsOrder": "sequence",
       "isBackground": true,
       "problemMatcher": {
-        "owner": "custom",
-        "pattern": [
-          {
-            "regexp": "^\\s*(\\S.*?):(\\d+):(\\d+):\\s*(.+)$",
-            "file": 1,
-            "line": 2,
-            "column": 3,
-            "message": 4
-          }
-        ],
+        "owner": "astro",
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "Configuration file:",
-          "endsPattern": "Server running\\.\\.\\. press ctrl-c to stop\\."
+          "beginsPattern": ".*astro dev.*",
+          "endsPattern": ".*Local.*http://127\\.0\\.0\\.1:4321.*"
         }
       }
     },
     {
-      "label": "Jekyll Prod",
+      "label": "GitHub Pages: Install & Build",
       "type": "shell",
-      "command": "export ASDF_DATA_DIR=\"${HOME}/.asdf\" && export PATH=\"${ASDF_DATA_DIR}/shims:$PATH\" && JEKYLL_ENV=production bundle exec jekyll serve --trace",
+      "command": "npx --yes --package=node@24 --package=pnpm@10.8.1 --call 'pnpm install --frozen-lockfile && pnpm run build'",
+      "problemMatcher": []
+    },
+    {
+      "label": "GitHub Pages: Preview",
+      "type": "shell",
+      "command": "npx --yes --package=node@24 --package=pnpm@10.8.1 --call 'pnpm run preview --host 127.0.0.1'",
+      "dependsOn": "GitHub Pages: Install & Build",
+      "dependsOrder": "sequence",
       "isBackground": true,
       "problemMatcher": {
-        "owner": "custom",
-        "pattern": [
-          {
-            "regexp": "^\\s*(\\S.*?):(\\d+):(\\d+):\\s*(.+)$",
-            "file": 1,
-            "line": 2,
-            "column": 3,
-            "message": 4
-          }
-        ],
+        "owner": "astro",
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "Configuration file:",
-          "endsPattern": "Server running\\.\\.\\. press ctrl-c to stop\\."
+          "beginsPattern": ".*astro preview.*",
+          "endsPattern": ".*Local.*http://127\\.0\\.0\\.1:4321.*"
         }
       }
     }

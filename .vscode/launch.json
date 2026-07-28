@@ -1,23 +1,21 @@
 {
   "version": "0.2.0",
   "configurations": [
-    // DEV
     {
-      "name": "Dev: Jekyll + Chrome",
+      "name": "Astro: Dev + Chrome",
       "type": "chrome",
       "request": "launch",
-      "url": "http://127.0.0.1:4000",
+      "url": "http://127.0.0.1:4321",
       "webRoot": "${workspaceFolder}",
-      "preLaunchTask": "Jekyll Dev"
+      "preLaunchTask": "Astro: Development Server"
     },
-    // PROD
     {
-      "name": "Prod: Jekyll + Chrome",
+      "name": "GitHub Pages: Build, Preview + Chrome",
       "type": "chrome",
       "request": "launch",
-      "url": "http://127.0.0.1:4000",
+      "url": "http://127.0.0.1:4321",
       "webRoot": "${workspaceFolder}",
-      "preLaunchTask": "Jekyll Prod"
+      "preLaunchTask": "GitHub Pages: Preview"
     }
   ]
 }

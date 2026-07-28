@@ -8,12 +8,12 @@ export async function GET(context) {
     description: 'Nat Baca\'s blog',
     site: context.site,
     items: posts
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+      .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
       .map((post) => ({
         title: post.data.title,
         description: post.data.description,
-        pubDate: post.data.pubDate,
-        link: `/blog/${post.slug}/`,
+        pubDate: post.data.publishedAt,
+        link: `/blog/${post.id}/`,
       })),
     customData: `<language>en-us</language>`,
   });

@@ -38,7 +38,8 @@ const socialLinks = [
 ];
 ---
 
-<div class="social-links" aria-label="Social links">
+<nav class="social-links" aria-labelledby="socials-heading">
+  <h2 id="socials-heading" class="sr-only">Socials</h2>
   <ul>
     {
       socialLinks.map((link) => (
@@ -50,21 +51,30 @@ const socialLinks = [
       ))
     }
   </ul>
-</div>
+</nav>
 
 <style>
   .social-links {
-    display: flex;
-    justify-content: center;
+    display: block;
+    margin-top: 0;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (min-width: 901px) and (max-height: 700px) {
+    .social-links {
+      padding-block: 0.5rem;
+    }
   }
 
   .social-links ul {
     list-style: none;
     padding: 0;
-    margin: 1rem 0 0;
+    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    width: auto;
+    flex-wrap: nowrap;
+    gap: 0.375rem;
     justify-content: center;
   }
 
@@ -73,20 +83,27 @@ const socialLinks = [
   }
 
   .social-links a {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.75rem;
+    height: 1.75rem;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--paper-deep);
-    color: var(--accent-strong);
-    border: 1px solid var(--line);
-    transition: transform 0.2s ease, background 0.2s ease;
+    color: var(--secondary-foreground);
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
   }
 
-  .social-links a:hover {
-    transform: translateY(-2px);
-    background: #ffffff;
+  .social-links a:hover,
+  .social-links a:focus-visible {
+    color: var(--accent-foreground);
+    background: var(--accent);
+  }
+
+  .social-links a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 </style>
