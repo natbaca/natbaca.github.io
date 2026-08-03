@@ -1,59 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import About from "../components/About.astro";
-import BlueskyEmbed from "../components/BlueskyEmbed.astro";
-import BlogPost from "../components/BlogPost.astro";
-import GoodreadsWidget from "../components/GoodreadsWidget.astro";
+import CombinedFeedPage from "../components/CombinedFeedPage.astro";
 import { getCombinedFeed } from "../lib/feed";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 const feed = await getCombinedFeed();
-const profileUrl = "https://bsky.app/profile/natbaca.bsky.social";
+const pageSize = 10;
+const totalPages = Math.max(1, Math.ceil(feed.length / pageSize));
+const pageFeed = feed.slice(0, pageSize);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="site-shell">
-    <About headingLevel={1} />
-
-    <div class="main-grid">
-      <aside class="reading-column" aria-label="Books">
-        <GoodreadsWidget />
-      </aside>
-
-      <section class="content-column" aria-label="Posts">
-        <h2 class="column-heading">Posts</h2>
-        <div class="content-list">
-          {
-            feed.length ? (
-              feed.map((item) => {
-                if (item.kind === "bluesky") {
-                  return <BlueskyEmbed post={item.post} />;
-                }
-
-                const Content = item.Content;
-                return (
-                  <BlogPost
-                    slug={item.post.id}
-                    title={item.post.data.title}
-                    publishedAt={item.post.data.publishedAt}
-                    updatedDate={item.post.data.updatedDate}
-                  >
-                    <Content />
-                  </BlogPost>
-                );
-              })
-            ) : (
-              <div class="empty-posts" role="status">
-                <h2>Writing in progress</h2>
-                <p>Check back soon for the first entry.</p>
-              </div>
-            )
-          }
-        </div>
-        <p class="feed-footnote">
-          <a href={profileUrl}>More on Bluesky →</a>
-        </p>
-      </section>
-    </div>
-  </div>
+  <CombinedFeedPage
+    feed={pageFeed}
+    currentPage={1}
+    totalPages={totalPages}
+    nextUrl={totalPages > 1 ? "/page/2/" : undefined}
+  />
 </BaseLayout>

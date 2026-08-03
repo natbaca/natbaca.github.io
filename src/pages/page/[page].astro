@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CombinedFeedPage from "../../components/CombinedFeedPage.astro";
+import { getCombinedFeed, type FeedItem } from "../../lib/feed";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+interface Props {
+  feed: FeedItem[];
+  currentPage: number;
+  totalPages: number;
+}
+
+export const getStaticPaths = (async () => {
+  const pageSize = 10;
+  const feed = await getCombinedFeed();
+  const totalPages = Math.max(1, Math.ceil(feed.length / pageSize));
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+    const currentPage = index + 2;
+    const start = (currentPage - 1) * pageSize;
+
+    return {
+      params: { page: String(currentPage) },
+      props: {
+        feed: feed.slice(start, start + pageSize),
+        currentPage,
+        totalPages,
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { feed, currentPage, totalPages } = Astro.props;
+const previousUrl = currentPage === 2 ? "/" : `/page/${currentPage - 1}/`;
+const nextUrl =
+  currentPage < totalPages ? `/page/${currentPage + 1}/` : undefined;
+const pageTitle = `Posts — Page ${currentPage} | ${SITE_TITLE}`;
+---
+
+<BaseLayout title={pageTitle} description={SITE_DESCRIPTION}>
+  <CombinedFeedPage
+    feed={feed}
+    currentPage={currentPage}
+    totalPages={totalPages}
+    previousUrl={previousUrl}
+    nextUrl={nextUrl}
+  />
+</BaseLayout>

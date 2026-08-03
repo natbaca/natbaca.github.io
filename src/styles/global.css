@@ -189,6 +189,20 @@ main.page {
 	letter-spacing: -0.015em;
 }
 
+.column-heading-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.page-position {
+	margin: 0;
+	color: var(--muted-foreground);
+	font-size: 0.875rem;
+	font-variant-numeric: tabular-nums;
+}
+
 .content-list {
 	display: grid;
 	gap: 1.5rem;
@@ -211,6 +225,26 @@ main.page {
 .feed-footnote a {
 	color: var(--foreground);
 	font-weight: 500;
+}
+
+.feed-pagination {
+	margin-top: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border);
+}
+
+.pagination-actions {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.pagination-actions > :only-child:last-child {
+	margin-left: auto;
+}
+
+.pagination-actions a {
+	text-decoration: none;
 }
 
 .empty-posts {
@@ -269,18 +303,30 @@ main.page {
 		gap: 1.25rem;
 	}
 
+	/* Reading above Posts on mobile (matches DOM order) */
 	.reading-column {
 		position: static;
-		order: 1;
+		order: 0;
+		max-height: none;
+		overflow: visible;
 	}
 
 	.content-column {
-		order: 0;
+		order: 1;
 	}
 }
 
 @media (max-width: 600px) {
 	.site-shell {
 		gap: 1.25rem;
+	}
+
+	.pagination-actions {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.pagination-actions > :only-child:last-child {
+		margin-left: 0;
 	}
 }

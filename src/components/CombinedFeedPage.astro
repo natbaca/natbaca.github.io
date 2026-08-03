@@ -1,0 +1,102 @@
+---
+import About from "./About.astro";
+import BlueskyEmbed from "./BlueskyEmbed.astro";
+import BlogPost from "./BlogPost.astro";
+import GoodreadsWidget from "./GoodreadsWidget.astro";
+import { buttonVariants } from "@/components/ui/button";
+import type { FeedItem } from "@/lib/feed";
+
+interface Props {
+  feed: FeedItem[];
+  currentPage: number;
+  totalPages: number;
+  previousUrl?: string;
+  nextUrl?: string;
+}
+
+const { feed, currentPage, totalPages, previousUrl, nextUrl } = Astro.props;
+const profileUrl = "https://bsky.app/profile/natbaca.bsky.social";
+---
+
+<div class="site-shell">
+  <About headingLevel={1} />
+
+  <div class="main-grid">
+    <aside class="reading-column" aria-label="Books">
+      <GoodreadsWidget />
+    </aside>
+
+    <section class="content-column" aria-label="Posts">
+      <div class="column-heading-row">
+        <h2 class="column-heading">Posts</h2>
+        {
+          totalPages > 1 ? (
+            <p class="page-position">
+              Page {currentPage} of {totalPages}
+            </p>
+          ) : null
+        }
+      </div>
+
+      <div class="content-list">
+        {
+          feed.length ? (
+            feed.map((item) => {
+              if (item.kind === "bluesky") {
+                return <BlueskyEmbed post={item.post} />;
+              }
+
+              const Content = item.Content;
+              return (
+                <BlogPost
+                  slug={item.post.id}
+                  title={item.post.data.title}
+                  publishedAt={item.post.data.publishedAt}
+                  updatedDate={item.post.data.updatedDate}
+                >
+                  <Content />
+                </BlogPost>
+              );
+            })
+          ) : (
+            <div class="empty-posts" role="status">
+              <h2>Writing in progress</h2>
+              <p>Check back soon for the first entry.</p>
+            </div>
+          )
+        }
+      </div>
+
+      {
+        totalPages > 1 ? (
+          <nav class="feed-pagination" aria-label="Posts pagination">
+            <div class="pagination-actions">
+              {previousUrl ? (
+                <a
+                  class={buttonVariants({ variant: "outline", size: "lg" })}
+                  href={previousUrl}
+                  rel="prev"
+                >
+                  ← Newer posts
+                </a>
+              ) : null}
+              {nextUrl ? (
+                <a
+                  class={buttonVariants({ variant: "outline", size: "lg" })}
+                  href={nextUrl}
+                  rel="next"
+                >
+                  Older posts →
+                </a>
+              ) : null}
+            </div>
+          </nav>
+        ) : null
+      }
+
+      <p class="feed-footnote">
+        <a href={profileUrl}>More on Bluesky →</a>
+      </p>
+    </section>
+  </div>
+</div>

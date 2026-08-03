@@ -1,0 +1,111 @@
+name: Security and quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "43 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, dependencies, links, and accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.8.1
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install frozen dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: pnpm audit --audit-level moderate
+
+      - name: Type-check and build
+        run: pnpm run build
+
+      - name: Check repository hygiene
+        run: |
+          git diff --check
+          test ! -e package-lock.json
+          test ! -e node_modules/.bin/astro || test ! -z "$(git check-ignore node_modules/.bin/astro)"
+
+      - name: Start production preview
+        run: |
+          pnpm exec astro preview --host 127.0.0.1 --port 4321 > /tmp/astro-preview.log 2>&1 &
+          echo $! > /tmp/astro-preview.pid
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/astro-preview.log
+          exit 1
+
+      - name: Check internal links and assets
+        run: >-
+          npx --yes linkinator@8.0.3 http://127.0.0.1:4321/
+          --recurse
+          --check-css
+          --skip '^(?!http://127\.0\.0\.1:4321)'
+          --verbosity error
+
+      - name: Check WCAG A and AA accessibility
+        run: >-
+          npx --yes @axe-core/cli@4.12.1
+          http://127.0.0.1:4321/
+          http://127.0.0.1:4321/page/2/
+          --tags wcag2a,wcag2aa
+          --exit
+          --chrome-options=--no-sandbox
+
+      - name: Stop production preview
+        if: always()
+        run: |
+          if test -f /tmp/astro-preview.pid; then
+            kill "$(cat /tmp/astro-preview.pid)" 2>/dev/null || true
+          fi
+
+      - name: Check deployed GitHub Pages site
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: curl --fail --show-error --silent --retry 3 https://natbaca.net/ > /dev/null
+
+  codeql:
+    name: CodeQL JavaScript and TypeScript analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+
+      - name: Analyze with CodeQL
+        uses: github/codeql-action/analyze@v4

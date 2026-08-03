@@ -27,12 +27,20 @@ export type FeedItem = BlogFeedItem | BlueskyFeedItem;
  * - Author posts are fetched via paginated public API and deduped against curated ones
  */
 export async function getCombinedFeed(): Promise<FeedItem[]> {
-  const [blogEntries, curatedEntries, { posts: recentPosts }] =
+  const [blogEntries, curatedEntries, blueskyFeed] =
     await Promise.all([
       getCollection("blog"),
       getCollection("bluesky").catch(() => []),
       fetchBlueskyPosts(),
     ]);
+
+  if (blueskyFeed.error) {
+    throw new Error(
+      "Unable to refresh the Bluesky feed; keeping the previous deployment."
+    );
+  }
+
+  const recentPosts = blueskyFeed.posts;
 
   const blogItems: BlogFeedItem[] = await Promise.all(
     blogEntries.map(async (post) => ({

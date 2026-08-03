@@ -1,6 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Rebuild hourly so newly published Bluesky posts reach the static site.
+  schedule:
+    - cron: "17 * * * *"
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch's name
   push:
@@ -13,6 +16,10 @@ permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
