@@ -18,12 +18,12 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <div class="split-layout">
+  <div class="site-shell">
     <About />
     <section class="content-column" aria-label="Post">
       <Card className="post-detail">
         <CardHeader>
-          <a class="post-back" href="/">← Back to the list</a>
+          <a class="post-back" href="/">← Back</a>
           <CardTitle className="text-3xl" role="heading" aria-level={1}>
             {post.data.title}
           </CardTitle>
@@ -38,10 +38,8 @@ const { Content } = await render(post);
           </p>
         </CardHeader>
         <CardContent>
-          <article class="post-full">
-            <div class="post-content">
-              <Content />
-            </div>
+          <article class="post-content">
+            <Content />
           </article>
         </CardContent>
       </Card>
@@ -50,21 +48,13 @@ const { Content } = await render(post);
 </BaseLayout>
 
 <style>
-  .post-full {
-    padding: 0;
-  }
-
   .post-back {
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
     font-weight: 600;
   }
 
-  .post-content {
-    margin-top: 0.5rem;
-  }
-
   .post-content :global(p) {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.15rem;
   }
 </style>

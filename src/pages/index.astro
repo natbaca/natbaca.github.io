@@ -1,67 +1,59 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import About from "../components/About.astro";
-import BlueskyFeed from "../components/BlueskyFeed.astro";
+import BlueskyEmbed from "../components/BlueskyEmbed.astro";
 import BlogPost from "../components/BlogPost.astro";
-import { getCollection, render } from "astro:content";
+import GoodreadsWidget from "../components/GoodreadsWidget.astro";
+import { getCombinedFeed } from "../lib/feed";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
-);
-
-const renderedPosts = await Promise.all(
-  posts.map(async (post) => ({
-    post,
-    Content: (await render(post)).Content,
-  }))
-);
+const feed = await getCombinedFeed();
+const profileUrl = "https://bsky.app/profile/natbaca.bsky.social";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="split-layout">
+  <div class="site-shell">
     <About headingLevel={1} />
-    <section class="content-column" aria-label="Writing">
-      <div class="content-list">
-        {
-          renderedPosts.length ? (
-            renderedPosts.map(({ post, Content }) => (
-              <BlogPost
-                slug={post.id}
-                title={post.data.title}
-                publishedAt={post.data.publishedAt}
-                updatedDate={post.data.updatedDate}
-              >
-                <Content />
-              </BlogPost>
-            ))
-          ) : (
-            <div class="empty-posts" role="status">
-              <h2>Writing in progress</h2>
-              <p>Check back soon for the first entry.</p>
-            </div>
-          )
-        }
-      </div>
-    </section>
-    <aside class="social-column" aria-label="Bluesky posts">
-      <BlueskyFeed />
-    </aside>
+
+    <div class="main-grid">
+      <aside class="reading-column" aria-label="Books">
+        <GoodreadsWidget />
+      </aside>
+
+      <section class="content-column" aria-label="Posts">
+        <h2 class="column-heading">Posts</h2>
+        <div class="content-list">
+          {
+            feed.length ? (
+              feed.map((item) => {
+                if (item.kind === "bluesky") {
+                  return <BlueskyEmbed post={item.post} />;
+                }
+
+                const Content = item.Content;
+                return (
+                  <BlogPost
+                    slug={item.post.id}
+                    title={item.post.data.title}
+                    publishedAt={item.post.data.publishedAt}
+                    updatedDate={item.post.data.updatedDate}
+                  >
+                    <Content />
+                  </BlogPost>
+                );
+              })
+            ) : (
+              <div class="empty-posts" role="status">
+                <h2>Writing in progress</h2>
+                <p>Check back soon for the first entry.</p>
+              </div>
+            )
+          }
+        </div>
+        <p class="feed-footnote">
+          <a href={profileUrl}>More on Bluesky →</a>
+        </p>
+      </section>
+    </div>
   </div>
 </BaseLayout>
-
-<style>
-  .social-column {
-    min-width: 0;
-  }
-
-  .social-column :global([data-slot="card"]) {
-    width: 100%;
-  }
-
-  @media (max-width: 900px) {
-    .social-column {
-      grid-column: auto;
-    }
-  }
-</style>

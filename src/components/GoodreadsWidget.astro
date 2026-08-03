@@ -1,8 +1,61 @@
 ---
-const shelfUrl =
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+const readShelfUrl =
   "https://www.goodreads.com/review/list/12688292-nat-baca?shelf=read&utm_medium=api&utm_source=custom_widget";
-const widgetUrl =
+const readWidgetUrl =
   "https://www.goodreads.com/review/custom_widget/12688292.Nat's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=8&order=d&shelf=read&show_author=1&show_cover=1&show_rating=0&show_review=0&show_tags=0&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=0&widget_id=1785276567&widget_text_color=000000&widget_title_size=medium&widget_width=medium";
+
+const currentlyReadingShelfUrl =
+  "https://www.goodreads.com/review/list/12688292-nat-baca?shelf=currently-reading&utm_medium=api&utm_source=grid_widget";
+const currentlyReadingWidgetUrl =
+  "https://www.goodreads.com/review/grid_widget/12688292.Nat's%20currently-reading%20book%20montage?cover_size=medium&hide_link=&hide_title=&num_books=8&order=d&shelf=currently-reading&sort=date_added&widget_id=1785770750";
+
+const currentlyReadingBooks = [
+  {
+    title: "The Rise of Communism: From Marx to Lenin",
+    href: "https://www.goodreads.com/book/show/48944710-the-rise-of-communism",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1574683739l/48944710._SX98_.jpg",
+  },
+  {
+    title: "Deep Learning with Python",
+    href: "https://www.goodreads.com/book/show/33986067-deep-learning-with-python",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1513265126l/33986067._SX98_.jpg",
+  },
+  {
+    title: "Dungeon Crawler Carl (Dungeon Crawler Carl, #1)",
+    href: "https://www.goodreads.com/book/show/211721806-dungeon-crawler-carl",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1715780755l/211721806._SX98_.jpg",
+  },
+  {
+    title: "First Language Acquisition",
+    href: "https://www.goodreads.com/book/show/211963675-first-language-acquisition",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1718972961l/211963675._SX98_.jpg",
+  },
+  {
+    title:
+      "Learn to Sign with Your Baby: 50 Essential ASL Signs to Help Your Child Communicate Their Needs, Wants, and Feelings",
+    href: "https://www.goodreads.com/book/show/61897954-learn-to-sign-with-your-baby",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1660049617l/61897954._SX98_.jpg",
+  },
+  {
+    title:
+      "And Baby Makes Three: The Six-Step Plan for Preserving Marital Intimacy and Rekindling Romance After Baby Arrives",
+    href: "https://www.goodreads.com/book/show/133572.And_Baby_Makes_Three",
+    image:
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1429154386l/133572._SX98_.jpg",
+  },
+];
 
 const fallbackBooks = [
   {
@@ -10,223 +63,293 @@ const fallbackBooks = [
     author: "Margaret Atwood",
     href: "https://www.goodreads.com/review/show/8803272239?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442806554l/17645._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442806554l/17645._SX98_.jpg",
   },
   {
     title: "Joyride: A Memoir",
     author: "Susan Orlean",
     href: "https://www.goodreads.com/review/show/8794942036?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745431576l/224003864._SX50_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745431576l/224003864._SX98_.jpg",
   },
   {
     title: "Dubliners (Norton Critical Editions)",
     author: "James Joyce",
     href: "https://www.goodreads.com/review/show/8791380678?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1698718415l/148419014._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1698718415l/148419014._SX98_.jpg",
   },
   {
     title: "Fever Beach",
     author: "Carl Hiaasen",
     href: "https://www.goodreads.com/review/show/8787040054?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1733071007l/217245548._SX50_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1733071007l/217245548._SX98_.jpg",
   },
   {
     title: "The Library Book",
     author: "Susan Orlean",
     href: "https://www.goodreads.com/review/show/8776929392?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1599591284l/39507318._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1599591284l/39507318._SX98_.jpg",
   },
   {
     title: "Furious Minds",
     author: "Laura K. Field",
     href: "https://www.goodreads.com/review/show/8771300053?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1747306970l/230169545._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1747306970l/230169545._SX98_.jpg",
   },
   {
     title: "Yesteryear",
     author: "Caro Claire Burke",
     href: "https://www.goodreads.com/review/show/8765265039?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1753932705l/238226942._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1753932705l/238226942._SX98_.jpg",
   },
   {
     title: "The God of Carnage",
     author: "Yasmina Reza",
     href: "https://www.goodreads.com/review/show/8748489569?utm_medium=api&utm_source=custom_widget",
     image:
-      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347752275l/3070605._SY75_.jpg",
+      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347752275l/3070605._SX98_.jpg",
   },
 ];
 ---
 
-<section class="reading-shelf" aria-labelledby="reading-heading">
-  <h2 id="reading-heading" class="sr-only">Recently Read</h2>
-  <div class="goodreads-shell">
-      <div id="gr_custom_widget_1785276567">
-        <div class="gr_custom_container_1785276566">
-          <h2 class="gr_custom_header_1785276566">
-            <a rel="nofollow" href={shelfUrl}>Nat's bookshelf: read</a>
-          </h2>
-          {
-            fallbackBooks.map((book) => (
-              <div class="gr_custom_each_container_1785276566">
-                <div class="gr_custom_book_container_1785276566">
+<Card className="reading-section gap-0 overflow-visible py-0">
+  <CardHeader className="px-5 pt-5 pb-2">
+    <CardTitle role="heading" aria-level={2}>Reading</CardTitle>
+  </CardHeader>
+  <CardContent className="reading-shelf px-5 pb-5">
+    <div class="shelf-block">
+      <div class="shelf-heading">
+        <p class="shelf-label">Currently reading</p>
+        <a class="shelf-link" href={currentlyReadingShelfUrl}>Shelf ↗</a>
+      </div>
+      <div class="goodreads-shell currently-reading-shell">
+        <div id="gr_grid_widget_1785770750">
+          <div class="gr_grid_container">
+            {
+              currentlyReadingBooks.map((book) => (
+                <div class="gr_grid_book_container">
                   <a title={book.title} rel="nofollow" href={book.href}>
                     <img
                       alt={`Cover of ${book.title}`}
                       src={book.image}
-                      width="50"
-                      height="75"
+                      width="98"
+                      height="147"
                       loading="lazy"
                     />
                   </a>
                 </div>
-                <div class="gr_custom_title_1785276566">
-                  <a rel="nofollow" href={book.href}>{book.title}</a>
-                </div>
-                <div class="gr_custom_author_1785276566">
-                  by {book.author}
-                </div>
-              </div>
-            ))
-          }
+              ))
+            }
+          </div>
         </div>
+        <script is:inline src={currentlyReadingWidgetUrl}></script>
+        <noscript>
+          <p>
+            <a href={currentlyReadingShelfUrl}
+              >See what I'm currently reading on Goodreads.</a
+            >
+          </p>
+        </noscript>
       </div>
-      <script is:inline src={widgetUrl}></script>
-      <noscript>
-        <p>
-          <a href={shelfUrl}>See the books I've read recently on Goodreads.</a>
-        </p>
-      </noscript>
-  </div>
-  <a class="shelf-link" href={shelfUrl}>Full shelf ↗</a>
-</section>
+    </div>
+
+    <div class="shelf-block">
+      <div class="shelf-heading">
+        <p class="shelf-label">Recently read</p>
+        <a class="shelf-link" href={readShelfUrl}>Shelf ↗</a>
+      </div>
+      <div class="goodreads-shell recently-read-shell">
+        <div id="gr_custom_widget_1785276567">
+          <div class="gr_custom_container_1785276566">
+            <h2 class="gr_custom_header_1785276566">
+              <a rel="nofollow" href={readShelfUrl}>Nat's bookshelf: read</a>
+            </h2>
+            {
+              fallbackBooks.map((book) => (
+                <div class="gr_custom_each_container_1785276566">
+                  <div class="gr_custom_book_container_1785276566">
+                    <a title={book.title} rel="nofollow" href={book.href}>
+                      <img
+                        alt={`Cover of ${book.title}`}
+                        src={book.image}
+                        width="98"
+                        height="147"
+                        loading="lazy"
+                      />
+                    </a>
+                  </div>
+                  <div class="gr_custom_title_1785276566">
+                    <a rel="nofollow" href={book.href}>
+                      {book.title}
+                    </a>
+                  </div>
+                  <div class="gr_custom_author_1785276566">
+                    by {book.author}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <script is:inline src={readWidgetUrl}></script>
+        <noscript>
+          <p>
+            <a href={readShelfUrl}
+              >See the books I've read recently on Goodreads.</a
+            >
+          </p>
+        </noscript>
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
 <style>
   .reading-shelf {
-    margin-top: 0;
-    padding-block: 0.75rem;
-    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 1.15rem;
+    min-width: 0;
+  }
+
+  .shelf-block {
+    min-width: 0;
+  }
+
+  .shelf-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .shelf-label {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .shelf-link {
-    display: block;
-    margin-top: 0.25rem;
     color: var(--foreground);
     font-size: 0.75rem;
     font-weight: 500;
-    text-align: right;
+    text-decoration: none;
+  }
+
+  .shelf-link:hover {
+    text-decoration: underline;
   }
 
   .goodreads-shell {
-    min-height: 2.75rem;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
 
-  .goodreads-shell :global([class^="gr_custom_container_"]) {
+  .currently-reading-shell :global(.gr_grid_container),
+  .currently-reading-shell :global([class^="gr_grid_container"]),
+  .recently-read-shell :global([class^="gr_custom_container_"]) {
     display: grid !important;
+    /* 4 cols: fills the sidebar without oversized covers / tall overflow */
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 0.375rem 0.5rem !important;
+    justify-items: stretch !important;
+    gap: 0.45rem !important;
     width: 100% !important;
+    max-width: 100% !important;
     padding: 0 !important;
     border: 0 !important;
-    border-radius: 0 !important;
-    overflow: visible !important;
     background: transparent !important;
-    color: var(--foreground) !important;
+    overflow: visible !important;
   }
 
-  .goodreads-shell :global([class^="gr_custom_header_"]),
-  .goodreads-shell :global([class^="gr_custom_container_"] > br),
-  .goodreads-shell :global([class^="gr_custom_container_"] > center) {
+  .currently-reading-shell :global(.gr_grid_container > h2),
+  .currently-reading-shell :global(.gr_grid_container > br),
+  .currently-reading-shell :global(.gr_grid_branding),
+  .currently-reading-shell :global(#gr_grid_widget_1785770750 > h2),
+  .recently-read-shell :global([class^="gr_custom_header_"]),
+  .recently-read-shell :global([class^="gr_custom_container_"] > br),
+  .recently-read-shell :global([class^="gr_custom_container_"] > center) {
     display: none !important;
   }
 
-  .goodreads-shell :global([class^="gr_custom_each_container_"]) {
+  .currently-reading-shell :global(.gr_grid_book_container),
+  .recently-read-shell :global([class^="gr_custom_each_container_"]) {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: auto !important;
-    min-width: 0 !important;
+    float: none !important;
+    justify-content: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
     overflow: visible !important;
   }
 
-  .goodreads-shell :global([class^="gr_custom_book_container_"]) {
+  .currently-reading-shell :global(.gr_grid_book_container a),
+  .recently-read-shell :global([class^="gr_custom_book_container_"]) {
+    display: block !important;
     float: none !important;
-    width: 2.5rem !important;
-    height: 3.25rem !important;
-    aspect-ratio: 5 / 7 !important;
-    margin: 0 !important;
+    /* Fill the 4-col cell; shorter/safer than the previous 3-col stretch */
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 2 / 3 !important;
+    height: auto !important;
+    max-height: none !important;
     overflow: hidden !important;
-    border-radius: var(--radius) !important;
+    border-radius: 0.3rem !important;
     background: var(--muted) !important;
+    box-shadow: 0 1px 2px oklch(0.2 0.02 70 / 0.08);
   }
 
-  .goodreads-shell :global([class^="gr_custom_book_container_"] img) {
+  .currently-reading-shell :global(.gr_grid_book_container img),
+  .recently-read-shell :global([class^="gr_custom_book_container_"] img) {
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
+    max-width: 100% !important;
     object-fit: cover !important;
+    border: 0 !important;
   }
 
-  .goodreads-shell :global([class^="gr_custom_title_"]) {
-    display: -webkit-box !important;
-    width: 100% !important;
-    margin-top: 0.25rem !important;
-    overflow: hidden !important;
-    color: var(--foreground) !important;
-    font-size: 0.7rem !important;
-    font-weight: 700 !important;
-    line-height: 1.1 !important;
-    text-align: center !important;
-    -webkit-box-orient: vertical !important;
-    -webkit-line-clamp: 2 !important;
-  }
-
-  .goodreads-shell :global([class^="gr_custom_title_"] a),
-  .goodreads-shell :global([class^="gr_custom_author_"] a) {
-    color: var(--foreground) !important;
-  }
-
-  .goodreads-shell :global([class^="gr_custom_author_"]) {
-    display: none !important;
-  }
-
-  .goodreads-shell :global([class^="gr_custom_tags_"]),
-  .goodreads-shell :global([class^="gr_custom_rating_"]) {
+  .currently-reading-shell :global(.gr_grid_container::after),
+  .currently-reading-shell :global([class^="gr_grid_container"]::after),
+  .recently-read-shell :global([class^="gr_custom_title_"]),
+  .recently-read-shell :global([class^="gr_custom_author_"]),
+  .recently-read-shell :global([class^="gr_custom_tags_"]),
+  .recently-read-shell :global([class^="gr_custom_rating_"]) {
     display: none !important;
   }
 
   noscript p {
-    margin: 1rem 0 0;
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
   }
 
-  @media (min-width: 901px) and (max-height: 700px) {
-    .reading-shelf {
-      padding-block: 0.5rem;
+  /* Full-width reading card: more columns so covers stay moderate */
+  @media (max-width: 900px) {
+    .currently-reading-shell :global(.gr_grid_container),
+    .currently-reading-shell :global([class^="gr_grid_container"]),
+    .recently-read-shell :global([class^="gr_custom_container_"]) {
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 0.5rem !important;
     }
+  }
 
-    .goodreads-shell :global([class^="gr_custom_container_"]) {
-      gap: 0.375rem !important;
-    }
-
-    .goodreads-shell :global([class^="gr_custom_book_container_"]) {
-      width: 2rem !important;
-      height: 2.5rem !important;
-    }
-
-    .goodreads-shell :global([class^="gr_custom_title_"]) {
-      margin-top: 0.125rem !important;
-      font-size: 0.625rem !important;
-      white-space: nowrap !important;
-      text-overflow: ellipsis !important;
-      -webkit-line-clamp: 1 !important;
+  @media (max-width: 480px) {
+    .currently-reading-shell :global(.gr_grid_container),
+    .currently-reading-shell :global([class^="gr_grid_container"]),
+    .recently-read-shell :global([class^="gr_custom_container_"]) {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 0.4rem !important;
     }
   }
 </style>
