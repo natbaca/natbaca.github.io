@@ -74,6 +74,9 @@ jobs:
           --skip '^(?!http://127\.0\.0\.1:4321)'
           --verbosity error
 
+      - name: Install matching Chrome and ChromeDriver
+        run: npx --yes browser-driver-manager@2.0.1 install chrome
+
       - name: Check WCAG A and AA accessibility
         run: >-
           npx --yes @axe-core/cli@4.12.1
