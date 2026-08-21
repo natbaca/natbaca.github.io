@@ -4,3 +4,7 @@ packages:
   - '!**/test/**'
 
 ignoreWorkspaceRootCheck: true
+
+overrides:
+  nanoid: ^3.3.18
+  rollup: ^4.59.0
