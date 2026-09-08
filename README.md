@@ -41,7 +41,8 @@ Patch and minor package updates are grouped to reduce PR noise.
 
 Dependabot patch and minor PRs automatically squash-merge only after the required
 build, dependency audit, links, accessibility, and CodeQL checks pass against an
-up-to-date branch. Major upgrades require manual review. TypeScript 7+ is excluded
+up-to-date branch. GitHub Actions updates also auto-merge across major versions;
+major application-library and devcontainer upgrades require manual review. TypeScript 7+ is excluded
 until Astro supports its compiler API; revisit the linked tracking issue in
 `.github/dependabot.yml` before removing that exception.
 
