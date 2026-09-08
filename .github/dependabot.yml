@@ -1,12 +1,40 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for more information:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-# https://containers.dev/guide/dependabot
-
 version: 2
 updates:
- - package-ecosystem: "devcontainers"
-   directory: "/"
-   schedule:
-     interval: weekly
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    # Include transitive dependencies so the audited lockfile stays current.
+    allow:
+      - dependency-type: all
+    cooldown:
+      default-days: 3
+    groups:
+      compatible-packages:
+        applies-to: version-updates
+        patterns: ['*']
+        update-types: [minor, patch]
+      security-patches:
+        applies-to: security-updates
+        patterns: ['*']
+        update-types: [minor, patch]
+    ignore:
+      # Astro's checker requires the compiler API missing in TypeScript 7.
+      # Revisit when https://github.com/withastro/roadmap/discussions/1321 is resolved.
+      - dependency-name: typescript
+        versions: ['>=7']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      compatible-actions:
+        patterns: ['*']
+        update-types: [minor, patch]
+
+  - package-ecosystem: devcontainers
+    directory: /
+    schedule:
+      interval: weekly
