@@ -1,9 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Rebuild hourly so newly published Bluesky posts reach the static site.
+  # Daily safety net in case GitHub suppresses a bot-triggered push event.
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 6 * * *"
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch's name
   push:

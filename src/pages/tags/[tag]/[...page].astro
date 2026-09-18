@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PostFeedPage from "../../../components/PostFeedPage.astro";
+import {
+  getRenderedPosts,
+  PAGE_SIZE,
+  postsWithTag,
+  summarizeTags,
+} from "../../../lib/posts";
+import { SITE_TITLE } from "../../../consts";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getRenderedPosts();
+  const tags = summarizeTags(posts);
+
+  return tags.flatMap((tag) =>
+    paginate(postsWithTag(posts, tag.name), {
+      params: { tag: tag.name },
+      pageSize: PAGE_SIZE,
+      props: { tags, totalPosts: posts.length, activeTag: tag.name },
+    })
+  );
+}) satisfies GetStaticPaths;
+
+const { page, tags, totalPosts, activeTag } = Astro.props;
+---
+
+<BaseLayout
+  title={`Posts tagged ${activeTag} | ${SITE_TITLE}`}
+  description={`Posts about ${activeTag}.`}
+>
+  <PostFeedPage
+    posts={page.data}
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+    previousUrl={page.url.prev}
+    nextUrl={page.url.next}
+    tags={tags}
+    totalPosts={totalPosts}
+    activeTag={activeTag}
+  />
+</BaseLayout>

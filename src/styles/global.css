@@ -154,9 +154,18 @@ main.page {
 
 .site-shell {
 	display: grid;
-	gap: 2rem;
+	gap: 1.5rem;
 	width: min(100%, var(--content-max));
 	margin: 0 auto;
+}
+
+.site-shell > * {
+	min-width: 0;
+}
+
+/* A single post has no sidebar beside it, so don't stretch it to feed width */
+.site-shell.post-page {
+	width: min(100%, 60rem);
 }
 
 .main-grid {
@@ -174,11 +183,18 @@ main.page {
 .reading-column {
 	position: sticky;
 	top: var(--page-pad);
-	/* Keep tall Reading card fully reachable inside the sticky column */
+	/* Keep a tall Reading card fully reachable inside the sticky column */
 	max-height: calc(100vh - (var(--page-pad) * 2));
 	overflow-x: hidden;
 	overflow-y: auto;
 	overscroll-behavior: contain;
+}
+
+.column-heading-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
 }
 
 .column-heading {
@@ -187,13 +203,6 @@ main.page {
 	font-weight: 700;
 	line-height: 1.2;
 	letter-spacing: -0.015em;
-}
-
-.column-heading-row {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 1rem;
 }
 
 .page-position {
@@ -208,23 +217,10 @@ main.page {
 	gap: 1.5rem;
 }
 
-.content-list > * {
-	width: 100%;
-	min-width: 0;
-}
-
+.content-list > *,
 .content-list [data-slot="card"] {
 	width: 100%;
-}
-
-.feed-footnote {
-	margin: 1rem 0 0;
-	font-size: 0.95rem;
-}
-
-.feed-footnote a {
-	color: var(--foreground);
-	font-weight: 500;
+	min-width: 0;
 }
 
 .feed-pagination {
@@ -243,8 +239,31 @@ main.page {
 	margin-left: auto;
 }
 
-.pagination-actions a {
+.pagination-link {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.65rem 1.15rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--card);
+	color: var(--foreground);
+	font-size: 0.9375rem;
+	font-weight: 600;
 	text-decoration: none;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.pagination-link:hover,
+.pagination-link:focus-visible {
+	background: var(--accent);
+	border-color: var(--ring);
+}
+
+.pagination-link:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: 2px;
 }
 
 .empty-posts {
@@ -255,6 +274,7 @@ main.page {
 }
 
 .post-meta {
+	margin: 0;
 	color: var(--muted-foreground);
 	font-size: 0.9375rem;
 }
@@ -265,10 +285,56 @@ main.page {
 	word-break: break-word;
 }
 
-/* Bluesky cards should use the full posts-column width (including link previews). */
-.post-content.bluesky-content {
-	max-width: none;
-	width: 100%;
+.post-content > :first-child {
+	margin-top: 0;
+}
+
+.post-content > :last-child {
+	margin-bottom: 0;
+}
+
+.post-content p {
+	margin: 0 0 1.15rem;
+}
+
+/* Underlined rather than color-only, so inline links stay distinguishable */
+.post-content a {
+	text-decoration: underline;
+}
+
+/* Bound by height as well as width, so the portrait photos and phone
+   screenshots carried over from the original posts don't run off the screen. */
+.post-content img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 30rem;
+	margin: 1.5rem 0;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--muted);
+}
+
+/* Link cards carried over from the original posts. */
+.post-content blockquote {
+	margin: 1.5rem 0;
+	padding: 0.9rem 1.1rem;
+	border: 1px solid var(--border);
+	border-left: 3px solid var(--primary);
+	border-radius: var(--radius);
+	background: var(--muted);
+	font-size: 0.9375rem;
+	line-height: 1.55;
+}
+
+.post-content blockquote p {
+	margin: 0;
+}
+
+.post-content blockquote p + p {
+	margin-top: 0.4rem;
+	color: var(--muted-foreground);
 }
 
 .post-content pre {
@@ -295,7 +361,7 @@ main.page {
 
 @media (max-width: 900px) {
 	.site-shell {
-		gap: 1.5rem;
+		gap: 1.25rem;
 	}
 
 	.main-grid {
@@ -317,10 +383,6 @@ main.page {
 }
 
 @media (max-width: 600px) {
-	.site-shell {
-		gap: 1.25rem;
-	}
-
 	.pagination-actions {
 		align-items: stretch;
 		flex-direction: column;
@@ -328,5 +390,9 @@ main.page {
 
 	.pagination-actions > :only-child:last-child {
 		margin-left: 0;
+	}
+
+	.pagination-link {
+		justify-content: center;
 	}
 }

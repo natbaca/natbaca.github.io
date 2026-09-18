@@ -1,20 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CombinedFeedPage from "../components/CombinedFeedPage.astro";
-import { getCombinedFeed } from "../lib/feed";
+import PostFeedPage from "../components/PostFeedPage.astro";
+import {
+  getRenderedPosts,
+  PAGE_SIZE,
+  summarizeTags,
+  totalPages,
+} from "../lib/posts";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
-const feed = await getCombinedFeed();
-const pageSize = 10;
-const totalPages = Math.max(1, Math.ceil(feed.length / pageSize));
-const pageFeed = feed.slice(0, pageSize);
+const posts = await getRenderedPosts();
+const pageCount = totalPages(posts.length);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <CombinedFeedPage
-    feed={pageFeed}
+  <PostFeedPage
+    posts={posts.slice(0, PAGE_SIZE)}
     currentPage={1}
-    totalPages={totalPages}
-    nextUrl={totalPages > 1 ? "/page/2/" : undefined}
+    totalPages={pageCount}
+    nextUrl={pageCount > 1 ? "/page/2/" : undefined}
+    tags={summarizeTags(posts)}
+    totalPosts={posts.length}
   />
 </BaseLayout>

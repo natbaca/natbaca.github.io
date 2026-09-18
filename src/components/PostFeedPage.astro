@@ -1,0 +1,99 @@
+---
+import About from "./About.astro";
+import BlogPost from "./BlogPost.astro";
+import GoodreadsWidget from "./GoodreadsWidget.astro";
+import TagFilter from "./TagFilter.astro";
+import type { RenderedPost, TagSummary } from "@/lib/posts";
+import type { Tag } from "../content.config";
+
+interface Props {
+  posts: RenderedPost[];
+  currentPage: number;
+  totalPages: number;
+  previousUrl?: string;
+  nextUrl?: string;
+  tags: TagSummary[];
+  totalPosts: number;
+  activeTag?: Tag;
+}
+
+const {
+  posts,
+  currentPage,
+  totalPages,
+  previousUrl,
+  nextUrl,
+  tags,
+  totalPosts,
+  activeTag,
+} = Astro.props;
+---
+
+<div class="site-shell">
+  <About headingLevel={1} />
+
+  <div class="main-grid">
+    <aside class="reading-column" aria-label="Books">
+      <GoodreadsWidget />
+    </aside>
+
+    <section class="content-column" aria-label="Posts">
+      <div class="column-heading-row">
+        <h2 class="column-heading">
+          {activeTag ? `Posts tagged ${activeTag}` : "Posts"}
+        </h2>
+        {
+          totalPages > 1 ? (
+            <p class="page-position">
+              Page {currentPage} of {totalPages}
+            </p>
+          ) : null
+        }
+      </div>
+
+      <TagFilter tags={tags} activeTag={activeTag} totalPosts={totalPosts} />
+
+      <div class="content-list">
+        {
+          posts.length ? (
+            posts.map(({ post, Content }) => (
+              <BlogPost
+                slug={post.id}
+                title={post.data.title}
+                publishedAt={post.data.publishedAt}
+                updatedDate={post.data.updatedDate}
+                tags={post.data.tags}
+              >
+                <Content />
+              </BlogPost>
+            ))
+          ) : (
+            <div class="empty-posts" role="status">
+              <h3>Writing in progress</h3>
+              <p>Check back soon for the first entry.</p>
+            </div>
+          )
+        }
+      </div>
+
+      {
+        totalPages > 1 ? (
+          <nav class="feed-pagination" aria-label="Posts pagination">
+            <div class="pagination-actions">
+              {previousUrl ? (
+                <a class="pagination-link" href={previousUrl} rel="prev">
+                  ← Newer posts
+                </a>
+              ) : null}
+              {nextUrl ? (
+                <a class="pagination-link" href={nextUrl} rel="next">
+                  Older posts →
+                </a>
+              ) : null}
+            </div>
+          </nav>
+        ) : null
+      }
+    </section>
+  </div>
+</div>

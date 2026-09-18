@@ -2,12 +2,13 @@
 
 [![Deploy to GitHub Pages](https://github.com/natbaca/natbaca.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/natbaca/natbaca.github.io/actions/workflows/deploy.yml)
 
-Personal site and blog built with Astro.
+Personal site built with Astro.
 
 ## Overview
 
-- Home page with an about section and recent writing
-- Blog content sourced from `src/content/blog/`
+- Home page with an about section, links to profiles on other sites, Goodreads shelves in a sidebar, and the post feed alongside
+- Posts sourced from Markdown in `src/content/blog/`, shown in full in the feed, 10 per page, and each on its own permalink
+- Tag filtering, with a page per tag at `/tags/<tag>/`
 - Deployed to GitHub Pages via Actions
 
 ## Tech stack
@@ -26,7 +27,17 @@ Open `http://localhost:4321` in your browser.
 
 ## Content
 
-Add posts as Markdown files in `src/content/blog/` with the required frontmatter defined in `src/content/config.ts`.
+Add posts as Markdown files in `src/content/blog/`, with the frontmatter defined
+by the schema in `src/content.config.ts`. Each post needs at least one tag, and
+tags come from the fixed list in that same file — add to the list there before
+using a new one. Images belong in
+`src/content/blog/images/` and are referenced relatively (`./images/name.jpg`) so
+Astro optimizes them at build time.
+
+Bio and profile links live in `src/components/About.astro` and
+`src/components/SocialLinks.astro`. The book shelves are Goodreads widgets in
+`src/components/GoodreadsWidget.astro`; the inline markup there is a static
+fallback that Goodreads' own scripts replace at runtime.
 
 ## Deployment
 
@@ -48,6 +59,6 @@ until Astro supports its compiler API; revisit the linked tracking issue in
 
 The auto-merge workflow only reads trusted Dependabot metadata; it never checks
 out PR code. The repository must keep auto-merge enabled and both CI jobs required
-in its main-branch ruleset. Pushes deploy the site; the existing hourly deployment
+in its main-branch ruleset. Pushes deploy the site; the existing daily deployment
 also picks up automated merges if GitHub suppresses a bot-triggered push event.
 Prefer fixing or rebasing Dependabot PRs over manual bulk dependency upgrades.
