@@ -1,9 +1,9 @@
 ---
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import About from "../../components/About.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -18,32 +18,34 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <div class="site-shell">
+  <div class="site-shell post-page">
     <About />
-    <section class="content-column" aria-label="Post">
-      <Card className="post-detail">
-        <CardHeader>
-          <a class="post-back" href="/">← Back</a>
-          <CardTitle className="text-3xl" role="heading" aria-level={1}>
-            {post.data.title}
-          </CardTitle>
-          <p class="post-meta">
-            {
-              post.data.updatedDate ? (
-                <>Updated <FormattedDate date={post.data.updatedDate} /></>
-              ) : (
-                <>Published <FormattedDate date={post.data.publishedAt} /></>
-              )
-            }
-          </p>
-        </CardHeader>
-        <CardContent>
-          <article class="post-content">
-            <Content />
-          </article>
-        </CardContent>
-      </Card>
-    </section>
+    <Card className="post-detail">
+      <CardHeader>
+        <a class="post-back" href="/">← Back</a>
+        <CardTitle className="text-3xl" role="heading" aria-level={1}>
+          {post.data.title}
+        </CardTitle>
+        <p class="post-meta">
+          {
+            post.data.updatedDate ? (
+              <>
+                Updated <FormattedDate date={post.data.updatedDate} />
+              </>
+            ) : (
+              <>
+                Published <FormattedDate date={post.data.publishedAt} />
+              </>
+            )
+          }
+        </p>
+      </CardHeader>
+      <CardContent>
+        <article class="post-content">
+          <Content />
+        </article>
+      </CardContent>
+    </Card>
   </div>
 </BaseLayout>
 
@@ -52,9 +54,5 @@ const { Content } = await render(post);
     display: inline-block;
     margin-bottom: 0.65rem;
     font-weight: 600;
-  }
-
-  .post-content :global(p) {
-    margin-bottom: 1.15rem;
   }
 </style>

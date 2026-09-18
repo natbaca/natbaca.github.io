@@ -15,25 +15,24 @@ interface Props {
   updatedDate?: Date;
 }
 
-const {
-  slug,
-  title,
-  publishedAt,
-  updatedDate,
-} = Astro.props;
+const { slug, title, publishedAt, updatedDate } = Astro.props;
 ---
 
 <Card className="post-card">
   <CardHeader>
-    <CardTitle role="heading" aria-level={2}>
+    <CardTitle role="heading" aria-level={3}>
       <a href={`/blog/${slug}/`}>{title}</a>
     </CardTitle>
     <CardDescription>
       {
         updatedDate ? (
-          <>Updated <FormattedDate date={updatedDate} /></>
+          <>
+            Updated <FormattedDate date={updatedDate} />
+          </>
         ) : (
-          <>Published <FormattedDate date={publishedAt} /></>
+          <>
+            Published <FormattedDate date={publishedAt} />
+          </>
         )
       }
     </CardDescription>
@@ -46,15 +45,14 @@ const {
 </Card>
 
 <style>
-  .post-card a {
-    color: inherit;
+  .post-card :global([data-slot="card-title"]) a {
+    color: var(--foreground);
+    text-decoration: none;
   }
 
-  .post-content :global(> :first-child) {
-    margin-top: 0;
-  }
-
-  .post-content :global(> :last-child) {
-    margin-bottom: 0;
+  .post-card :global([data-slot="card-title"]) a:hover,
+  .post-card :global([data-slot="card-title"]) a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 </style>

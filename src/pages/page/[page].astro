@@ -1,48 +1,54 @@
 ---
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import CombinedFeedPage from "../../components/CombinedFeedPage.astro";
-import { getCombinedFeed, type FeedItem } from "../../lib/feed";
+import PostFeedPage from "../../components/PostFeedPage.astro";
+import {
+  getRenderedPosts,
+  PAGE_SIZE,
+  totalPages,
+  type RenderedPost,
+} from "../../lib/posts";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
 interface Props {
-  feed: FeedItem[];
+  posts: RenderedPost[];
   currentPage: number;
   totalPages: number;
 }
 
 export const getStaticPaths = (async () => {
-  const pageSize = 10;
-  const feed = await getCombinedFeed();
-  const totalPages = Math.max(1, Math.ceil(feed.length / pageSize));
+  const posts = await getRenderedPosts();
+  const pageCount = totalPages(posts.length);
 
-  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+  // Page 1 lives at `/`, so this route only covers pages 2 and up.
+  return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
     const currentPage = index + 2;
-    const start = (currentPage - 1) * pageSize;
+    const start = (currentPage - 1) * PAGE_SIZE;
 
     return {
       params: { page: String(currentPage) },
       props: {
-        feed: feed.slice(start, start + pageSize),
+        posts: posts.slice(start, start + PAGE_SIZE),
         currentPage,
-        totalPages,
+        totalPages: pageCount,
       },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { feed, currentPage, totalPages } = Astro.props;
+const { posts, currentPage, totalPages: pageCount } = Astro.props;
 const previousUrl = currentPage === 2 ? "/" : `/page/${currentPage - 1}/`;
-const nextUrl =
-  currentPage < totalPages ? `/page/${currentPage + 1}/` : undefined;
-const pageTitle = `Posts — Page ${currentPage} | ${SITE_TITLE}`;
+const nextUrl = currentPage < pageCount ? `/page/${currentPage + 1}/` : undefined;
 ---
 
-<BaseLayout title={pageTitle} description={SITE_DESCRIPTION}>
-  <CombinedFeedPage
-    feed={feed}
+<BaseLayout
+  title={`Posts — Page ${currentPage} | ${SITE_TITLE}`}
+  description={SITE_DESCRIPTION}
+>
+  <PostFeedPage
+    posts={posts}
     currentPage={currentPage}
-    totalPages={totalPages}
+    totalPages={pageCount}
     previousUrl={previousUrl}
     nextUrl={nextUrl}
   />
