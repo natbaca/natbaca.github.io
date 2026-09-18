@@ -1,0 +1,51 @@
+---
+import { tagHref } from "@/lib/posts";
+import type { Tag } from "../content.config";
+
+interface Props {
+  tags: Tag[];
+  label?: string;
+}
+
+const { tags, label = "Tags" } = Astro.props;
+---
+
+<nav class="post-tags" aria-label={label}>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={tagHref(tag)}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .post-tags ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .post-tags a {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    text-decoration: none;
+  }
+
+  .post-tags a:hover,
+  .post-tags a:focus-visible {
+    border-color: var(--ring);
+    background: var(--accent);
+    color: var(--foreground);
+  }
+</style>

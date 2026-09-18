@@ -2,6 +2,9 @@
 title: "¿Camarón pela'o tú quieres?"
 description: "¿Camarón pela'o tú quieres? Camarón pela'o te doy! ¿Camaron pela'o prefieres? Con salsita y con limón! Do you want peeled shrimp? I give you peeled…"
 publishedAt: 2026-08-05T03:44:27.624Z
+tags:
+  - music
+  - food
 ---
 
 ¿Camarón pela'o tú quieres?\

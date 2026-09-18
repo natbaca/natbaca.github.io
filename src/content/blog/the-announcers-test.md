@@ -2,6 +2,9 @@
 title: "The announcer's test"
 description: "Announcer's test"
 publishedAt: 2026-07-17T04:44:03.811Z
+tags:
+  - linguistics
+  - humor
 ---
 
 [Announcer's test](https://en.wikipedia.org/wiki/Announcer's_test?wprov=sfti1#)

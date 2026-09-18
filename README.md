@@ -8,6 +8,7 @@ Personal site built with Astro.
 
 - Home page with an about section, links to profiles on other sites, Goodreads shelves in a sidebar, and the post feed alongside
 - Posts sourced from Markdown in `src/content/blog/`, shown in full in the feed, 10 per page, and each on its own permalink
+- Tag filtering, with a page per tag at `/tags/<tag>/`
 - Deployed to GitHub Pages via Actions
 
 ## Tech stack
@@ -27,7 +28,9 @@ Open `http://localhost:4321` in your browser.
 ## Content
 
 Add posts as Markdown files in `src/content/blog/`, with the frontmatter defined
-by the schema in `src/content.config.ts`. Images belong in
+by the schema in `src/content.config.ts`. Each post needs at least one tag, and
+tags come from the fixed list in that same file — add to the list there before
+using a new one. Images belong in
 `src/content/blog/images/` and are referenced relatively (`./images/name.jpg`) so
 Astro optimizes them at build time.
 

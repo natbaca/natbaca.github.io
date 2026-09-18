@@ -5,8 +5,10 @@ import PostFeedPage from "../../components/PostFeedPage.astro";
 import {
   getRenderedPosts,
   PAGE_SIZE,
+  summarizeTags,
   totalPages,
   type RenderedPost,
+  type TagSummary,
 } from "../../lib/posts";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
@@ -14,11 +16,14 @@ interface Props {
   posts: RenderedPost[];
   currentPage: number;
   totalPages: number;
+  tags: TagSummary[];
+  totalPosts: number;
 }
 
 export const getStaticPaths = (async () => {
   const posts = await getRenderedPosts();
   const pageCount = totalPages(posts.length);
+  const tags = summarizeTags(posts);
 
   // Page 1 lives at `/`, so this route only covers pages 2 and up.
   return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
@@ -31,12 +36,20 @@ export const getStaticPaths = (async () => {
         posts: posts.slice(start, start + PAGE_SIZE),
         currentPage,
         totalPages: pageCount,
+        tags,
+        totalPosts: posts.length,
       },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { posts, currentPage, totalPages: pageCount } = Astro.props;
+const {
+  posts,
+  currentPage,
+  totalPages: pageCount,
+  tags,
+  totalPosts,
+} = Astro.props;
 const previousUrl = currentPage === 2 ? "/" : `/page/${currentPage - 1}/`;
 const nextUrl = currentPage < pageCount ? `/page/${currentPage + 1}/` : undefined;
 ---
@@ -51,5 +64,7 @@ const nextUrl = currentPage < pageCount ? `/page/${currentPage + 1}/` : undefine
     totalPages={pageCount}
     previousUrl={previousUrl}
     nextUrl={nextUrl}
+    tags={tags}
+    totalPosts={totalPosts}
   />
 </BaseLayout>

@@ -2,6 +2,9 @@
 title: "Chinese proverb of the day"
 description: "Chinese proverb of the day — from the 11th century (!!): 三日不讀書，面目可憎 Literally: If you don't read for three days, you will become unattractive. If you…"
 publishedAt: 2026-07-21T04:30:15.630Z
+tags:
+  - linguistics
+  - books
 ---
 
 Chinese proverb of the day — from the 11th century (!!):\

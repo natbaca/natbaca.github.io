@@ -2,6 +2,10 @@
 title: "The Noble Eightfold Path and the Ten Crack Commandments"
 description: "Inspired by this statue from fb marketplace, a comparative exegetical study of the Noble Eightfold Path and The Ten Crack Commandments - see 🧵"
 publishedAt: 2026-07-11T05:17:47.366Z
+tags:
+  - music
+  - philosophy
+  - humor
 ---
 
 Inspired by this statue from fb marketplace, a comparative exegetical study of the Noble Eightfold Path and The Ten Crack Commandments - see 🧵

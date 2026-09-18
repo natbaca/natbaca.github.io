@@ -297,6 +297,11 @@ main.page {
 	margin: 0 0 1.15rem;
 }
 
+/* Underlined rather than color-only, so inline links stay distinguishable */
+.post-content a {
+	text-decoration: underline;
+}
+
 /* Bound by height as well as width, so the portrait photos and phone
    screenshots carried over from the original posts don't run off the screen. */
 .post-content img {

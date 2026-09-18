@@ -2,6 +2,10 @@
 title: "The coconut was named after a ghost demon"
 description: "the coconut was named after a ghost demon!: \"[it] wants to resemble a nose placed between two round eyes, from where it throws the sprout, when it…"
 publishedAt: 2026-08-04T11:03:03.518Z
+tags:
+  - etymology
+  - folklore
+  - food
 ---
 
 the coconut was named after a ghost demon!:\

@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import About from "../../components/About.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import PostTags from "../../components/PostTags.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export async function getStaticPaths() {
@@ -44,6 +45,7 @@ const { Content } = await render(post);
         <article class="post-content">
           <Content />
         </article>
+        <PostTags tags={post.data.tags} />
       </CardContent>
     </Card>
   </div>

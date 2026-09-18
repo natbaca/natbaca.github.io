@@ -2,6 +2,8 @@
 title: "There Stands the Glass is Chopin with a drinking problem"
 description: "I don’t know who needs to hear this, but Webb Pierce’s 1953 honky-tonk classic “There Stands the Glass” is just Chopin’s Nocturne No. 8 with a steel…"
 publishedAt: 2026-07-14T05:11:17.522Z
+tags:
+  - music
 ---
 
 I don’t know who needs to hear this, but Webb Pierce’s 1953 honky-tonk classic  “There Stands the Glass” is just Chopin’s Nocturne No. 8 with a steel guitar and a drinking problem.

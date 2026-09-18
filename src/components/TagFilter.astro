@@ -1,0 +1,81 @@
+---
+import type { TagSummary } from "@/lib/posts";
+import type { Tag } from "../content.config";
+
+interface Props {
+  tags: TagSummary[];
+  activeTag?: Tag;
+  totalPosts: number;
+}
+
+const { tags, activeTag, totalPosts } = Astro.props;
+---
+
+<nav class="tag-filter" aria-label="Filter posts by tag">
+  <ul>
+    <li>
+      <a href="/" aria-current={activeTag ? undefined : "page"}>
+        All <span class="tag-count">{totalPosts}</span>
+      </a>
+    </li>
+    {
+      tags.map((tag) => (
+        <li>
+          <a
+            href={tag.href}
+            aria-current={tag.name === activeTag ? "page" : undefined}
+          >
+            {tag.name} <span class="tag-count">{tag.count}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .tag-filter ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tag-filter a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--foreground);
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  .tag-filter a:hover,
+  .tag-filter a:focus-visible {
+    border-color: var(--ring);
+    background: var(--accent);
+  }
+
+  .tag-filter a[aria-current="page"] {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .tag-count {
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tag-filter a[aria-current="page"] .tag-count {
+    color: inherit;
+    opacity: 0.75;
+  }
+</style>

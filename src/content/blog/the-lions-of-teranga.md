@@ -2,6 +2,9 @@
 title: "The lions of teranga"
 description: "The Senegalese football team is nicknamed “the lions of teranga”. Aside from a reference to the country’s literal lions, “lions” connote ferocity.…"
 publishedAt: 2026-07-02T03:31:22.692Z
+tags:
+  - linguistics
+  - sports
 ---
 
 The Senegalese football team is nicknamed “the lions of teranga”. Aside from a reference to the country’s literal lions, “lions” connote ferocity. “Teranga”is a Wolof word summarizing the Senegalese national character, and roughly means “hospitality”. “Fiercely hospitable” is a great vibe!

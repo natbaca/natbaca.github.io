@@ -2,6 +2,9 @@
 title: "The character 聰: ears that hear clearly"
 description: "TIL: The Chinese character 聰, meaning intelligent, is comprised of 耳 (ear) + 悤 (smarts). 悤 , in turn, is 囪 (window) and 心 (heart): “a mind as clear and…"
 publishedAt: 2026-06-29T08:36:44.984Z
+tags:
+  - linguistics
+  - etymology
 ---
 
 TIL: The Chinese character 聰, meaning intelligent, is comprised of 耳 (ear) + 悤 (smarts).

@@ -2,6 +2,9 @@
 title: "For when the Tiger King needs a cargo liner"
 description: "Seen while shopping for dog cargo liners. I guess the Tiger King needs to transport his animals too🤷"
 publishedAt: 2026-07-08T02:49:10.780Z
+tags:
+  - humor
+  - animals
 ---
 
 Seen while shopping for dog cargo liners.  I guess the Tiger King needs to transport his animals too🤷

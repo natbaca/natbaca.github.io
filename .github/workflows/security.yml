@@ -82,6 +82,7 @@ jobs:
           npx --yes @axe-core/cli@4.12.1
           http://127.0.0.1:4321/
           http://127.0.0.1:4321/page/2/
+          http://127.0.0.1:4321/tags/music/
           http://127.0.0.1:4321/blog/nostrils-thirls-and-smoots/
           --tags wcag2a,wcag2aa
           --exit

@@ -2,6 +2,9 @@
 title: "Dar a luz: to give to the light"
 description: "Sometimes dual language signs really highlights how much better other languages are at expressing certain things. Compare “to give birth” with “dar a…"
 publishedAt: 2026-07-03T03:41:56.264Z
+tags:
+  - linguistics
+  - etymology
 ---
 
 Sometimes dual language signs really highlights how much better other languages are at expressing certain things. Compare “to give birth” with “dar a luz” (“to give to the light”)

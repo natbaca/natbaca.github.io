@@ -2,6 +2,9 @@
 title: "Snickers, or Marathon"
 description: "#crossculturalcommunication"
 publishedAt: 2026-06-29T08:39:57.551Z
+tags:
+  - linguistics
+  - food
 ---
 
 #crossculturalcommunication

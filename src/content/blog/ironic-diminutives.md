@@ -2,6 +2,8 @@
 title: "Ironic diminutives"
 description: "TIL: ironic diminutives! -ón, Spanish: usually embiggens, but in a few cases, indicates small size of or a lack of something (such as an ironic…"
 publishedAt: 2026-08-07T07:23:54.464Z
+tags:
+  - linguistics
 ---
 
 TIL: ironic diminutives!

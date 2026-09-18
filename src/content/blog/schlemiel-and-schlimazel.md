@@ -2,6 +2,9 @@
 title: "A schlemiel and a schlimazel"
 description: "A schlemiel is somebody who often spills his soup, and a schlimazel is the person it lands on."
 publishedAt: 2026-07-22T11:42:29.025Z
+tags:
+  - linguistics
+  - humor
 ---
 
 A schlemiel is somebody who often spills his soup, and a schlimazel is the person it lands on.

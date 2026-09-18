@@ -2,6 +2,10 @@
 title: "The raccoon is a wash bear"
 description: "TIL: The raccoon, to a surprising number of quite disparate world languages, is the “wash bear”, derived from its habit of appearing to wash its food."
 publishedAt: 2026-07-05T01:52:02.997Z
+tags:
+  - linguistics
+  - etymology
+  - animals
 ---
 
 TIL: The raccoon, to a surprising number of quite disparate world languages, is the “wash bear”, derived from its habit of appearing to wash its food.

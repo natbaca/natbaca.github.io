@@ -2,6 +2,8 @@
 title: "The Greek priest with a doom metal album"
 description: "“Musicians belong to very specific archetypes nowadays,” he says. “Everyone is a copy of a copy of a copy of a copy.” Tabakis defies all that. “He’s a…"
 publishedAt: 2026-07-02T23:14:57.608Z
+tags:
+  - music
 ---
 
 “Musicians belong to very specific archetypes nowadays,” he says. “Everyone is a copy of a copy of a copy of a copy.” Tabakis defies all that. “He’s a nice change from the typical artist.”

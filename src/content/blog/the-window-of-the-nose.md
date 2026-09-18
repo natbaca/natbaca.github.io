@@ -2,6 +2,8 @@
 title: "The window of the nose"
 description: "The eyes may be the “window of the soul”, but in Spanish the nostril is the “window of the nose”."
 publishedAt: 2026-07-18T07:38:38.229Z
+tags:
+  - linguistics
 ---
 
 The eyes may be the “window of the soul”, but in Spanish the nostril is the “window of the nose”.

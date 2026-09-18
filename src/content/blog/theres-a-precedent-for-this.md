@@ -2,6 +2,9 @@
 title: "There's a precedent for this"
 description: "Theres a precedent for this!"
 publishedAt: 2026-06-29T08:06:08.101Z
+tags:
+  - books
+  - animals
 ---
 
 Theres a precedent for this!

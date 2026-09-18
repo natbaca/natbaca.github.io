@@ -2,6 +2,10 @@
 title: "Nostrils, thirls, and smoots"
 description: "In other nose-related etymological news, “nostril” = “nose +‎ “thirl”. A “thirl” = “hole”, but also a “smoot”. A “smoot”, in turn, is either a “small…"
 publishedAt: 2026-07-18T07:47:38.403Z
+tags:
+  - linguistics
+  - etymology
+  - humor
 ---
 
 In other nose-related etymological news, “nostril” = “nose +‎ “thirl”. A “thirl” = “hole”, but also a “smoot”.

@@ -2,6 +2,9 @@
 title: "울고 웃고 그러면 똥구멍에 털이 나온다"
 description: "울고 웃고 그러면 똥구멍에 털이나온다. “If you start laughing in the midst of crying, you will grow hair out of your butt. Small horns will also grow out of your butt.…"
 publishedAt: 2026-07-19T01:02:57.009Z
+tags:
+  - linguistics
+  - folklore
 ---
 
 울고 웃고 그러면 똥구멍에 털이나온다.

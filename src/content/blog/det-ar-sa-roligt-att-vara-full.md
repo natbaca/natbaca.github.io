@@ -2,6 +2,9 @@
 title: "Det är så roligt att vara full"
 description: "Kiss i sängen Anthem of newborns everywhere: Kiss i sängen och ha det bra, ligga lita och fundera Varm om stjärten som en sommardag, jag tror jag…"
 publishedAt: 2026-06-30T05:07:12.465Z
+tags:
+  - music
+  - humor
 ---
 
 Anthem of newborns everywhere:

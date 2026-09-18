@@ -7,15 +7,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import FormattedDate from "./FormattedDate.astro";
+import PostTags from "./PostTags.astro";
+import type { Tag } from "../content.config";
 
 interface Props {
   slug: string;
   title: string;
   publishedAt: Date;
   updatedDate?: Date;
+  tags: Tag[];
 }
 
-const { slug, title, publishedAt, updatedDate } = Astro.props;
+const { slug, title, publishedAt, updatedDate, tags } = Astro.props;
 ---
 
 <Card className="post-card">
@@ -41,6 +44,7 @@ const { slug, title, publishedAt, updatedDate } = Astro.props;
     <article class="post-content">
       <slot />
     </article>
+    <PostTags tags={tags} label={`Tags for ${title}`} />
   </CardContent>
 </Card>
 
